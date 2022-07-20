@@ -6,15 +6,15 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2022/07/20 16:24:50 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/07/20 19:28:46 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include "minilibx/mlx/mlx.h"
-#include "../ft_printf/ft_printf.h"
+# include "minilibx/mlx/mlx.h"
+# include "ft_printf/ft_printf.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
