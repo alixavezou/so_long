@@ -23,7 +23,7 @@ MINILIBX = libmlx_Linux.a
 C_FILES = srcs/recupmap.c \
 			srcs/check_error.c \
 			srcs/main.c \
-			srcs/walls.c \
+			srcs/keycode.c \
 			get_next_line/get_next_line.c \
 			get_next_line/get_next_line_utils.c
 

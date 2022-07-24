@@ -6,13 +6,14 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:29:52 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/07/20 19:07:02 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/07/22 14:52:28 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include "ft_printf/ft_printf.h"
 
-int	ft_check_walls(char **tab, char *file_name,int size) //je lui envoie le nombre de lignes
+int	ft_check_walls(char **tab, char *file_name, int size) //je lui envoie le nombre de lignes
 {
 	int	x;
 	int	y;
