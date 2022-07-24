@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 19:12:51 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/07/24 15:17:45 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/07/24 17:09:00 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	ft_recup_map_size(t_data *data)
 	close (fd);
 }
 
-void	ft_print_map(t_data *data)
+void	ft_init_map(t_data *data)
 {
 	int		fd;
 	int		i;
@@ -63,11 +63,32 @@ void	ft_print_map(t_data *data)
 	close(fd);
 }
 
+void	ft_errors_map(t_data *data)
+{
+	int		len;
+	int		i;
+	int		fd;
+
+	i = 1;
+	len = ft_strlen(data->map[0]);
+	fd = open(data->file_name, O_RDONLY);
+	while (data->map[i])
+	{
+		if (len != ft_strlen(data->map[i]))
+		{
+			printf("wrong nb of columns\n");
+			exit(1);
+		}
+		i++;
+	}
+}
+
 int main()
 {
 	t_data	data;
 	data.file_name = "map/map.ber";
-	ft_print_map(&data);
+	ft_init_map(&data);
+	ft_errors_map(&data);
 	printf("%s", data.map[0]);
 	printf("%s", data.map[1]);
 	printf("%s", data.map[2]);

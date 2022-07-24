@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2022/07/22 16:27:12 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/07/24 17:05:29 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,11 @@ struct s_data
 # define GO_RIGHT 100
 
 size_t	ft_strlen(char *str);
-void 	init_map(t_data *so_long);
 
+void 	init_map(t_data *so_long);
 void	ft_recup_map_size(t_data *data);
+void	ft_errors_map(t_data *data);
+
 int		key_hook(int keycode, t_data *data);
 int		handle_no_event(void *data);
 int		ft_checkendofline(char *buffer_save);
