@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2022/07/24 17:05:29 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/07/24 19:42:38 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	ft_errors_map(t_data *data);
 int		key_hook(int keycode, t_data *data);
 int		handle_no_event(void *data);
 int		ft_checkendofline(char *buffer_save);
+int		ft_check_walls(t_data *data);
 
 void 	ft_print_walls(t_data env);
 char	*ft_strdup(char *src);
