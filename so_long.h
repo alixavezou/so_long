@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2022/07/25 11:31:12 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/07/26 01:31:41 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,20 @@ struct s_data
 {
 	void		*mlx_ptr;
 	void		*mlx_win;
-	void		*image;
-	void		*wall;
-	void		*collectible;
-	void		*player;
-	void		*exit;
-	void		*empty;
+	void		*mlx_wall;
+	void		*mlx_collectible;
+	void		*mlx_player;
+	void		*mlx_exit;
+	void		*mlx_empty;
+	void		*mlx_items;
 
 	int			x;
 	int			y;
 	int			map_size;
 	int			total_nb_line;
 	int			total_nb_col;
+	// int			image_width;
+	// int			image_heigth;
 
 	char		**map;
 	char		*file_name;
@@ -51,11 +53,19 @@ struct s_data
 # define GO_LEFT 97
 # define GO_RIGHT 100
 
+//MAPS ELEMENTS
+# define ITEMS_IMAGE "collectible.xpm"
+# define PLAYER_IMAGE "player.xpm"
+# define EXIT_IMAGE "exit.xpm"
+# define EMPTY_IMAGE "empty.xpm"
+# define WALLS_IMAGE "walls.xpm"
+
 size_t	ft_strlen(char *str);
 
-void 	init_map(t_data *so_long);
+void 	ft_init_map(t_data *so_long);
 void	ft_recup_map_size(t_data *data);
 void	ft_errors_map(t_data *data);
+void	ft_place_xpm(t_data *data);
 
 int		key_hook(int keycode, t_data *data);
 int		handle_no_event(void *data);

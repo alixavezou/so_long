@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 19:12:51 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/07/25 11:31:50 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/07/25 19:00:01 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,41 +60,23 @@ void	ft_init_map(t_data *data)
 		i++;
 		nb_line--;
 	}
+	data->map[i] = NULL;
+
 	close(fd);
 }
 
-void	ft_errors_map(t_data *data)
-{
-	int		len;
-	int		i;
-	int		fd;
-
-	i = 1;
-	len = ft_strlen(data->map[0]);
-	fd = open(data->file_name, O_RDONLY);
-	while (data->map[i])
-	{
-		if (len != ft_strlen(data->map[i]))
-		{
-			printf("wrong nb of columns\n");
-			exit(1);
-		}
-		i++;
-	}
-}
-
-int main()
-{
-	t_data	data;
-	data.file_name = "map/map.ber";
-	ft_init_map(&data);
-	ft_errors_map(&data);
-	ft_check_walls(&data);
-	ft_check_map(&data);
-	printf("%s", data.map[0]);
-	printf("%s", data.map[1]);
-	printf("%s", data.map[2]);
-	printf("%s", data.map[3]);
-	printf("%s", data.map[4]);
-	printf("%s", data.map[5]);
-}
+// int main()
+// {
+// 	t_data	data;
+// 	data.file_name = "map/map.ber";
+// 	ft_init_map(&data);
+// 	ft_errors_map(&data);
+// 	ft_check_walls(&data);
+// 	ft_check_map(&data);
+// 	printf("%s", data.map[0]);
+// 	printf("%s", data.map[1]);
+// 	printf("%s", data.map[2]);
+// 	printf("%s", data.map[3]);
+// 	printf("%s", data.map[4]);
+// 	printf("%s", data.map[5]);
+// }
