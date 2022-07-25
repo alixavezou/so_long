@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 19:12:51 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/07/24 20:03:44 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/07/25 11:31:50 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int main()
 	ft_init_map(&data);
 	ft_errors_map(&data);
 	ft_check_walls(&data);
+	ft_check_map(&data);
 	printf("%s", data.map[0]);
 	printf("%s", data.map[1]);
 	printf("%s", data.map[2]);

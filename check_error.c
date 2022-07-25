@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:29:52 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/07/24 20:02:57 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/07/25 12:07:46 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,45 @@ int	ft_check_walls(t_data *data)
 			exit(1);
 		}
 		y++;
+	}
+	return (0);
+}
+
+int	ft_check_map(t_data *data)
+{
+	int	i; //un compteur qui change de ligne
+	int	j; //un compteur qui s'incrémente dans chaque ligne
+	int	player;
+	int	collectible;
+	int	sortie;
+	int	empty;
+
+	i = 0;
+	j = 0;
+	player = 0;
+	collectible = 0;
+	sortie = 0;
+	empty = 0;
+	while (data->map[i])
+	{
+		while (data->map[i][j] != '\0')
+		{
+			if (data->map[i][j] == 'P')
+				player++;
+			if (data->map[i][j] == 'E')
+				sortie++;
+			if (data->map[i][j] == '0')
+				empty++;
+			if (data->map[i][j] == 'C')
+				collectible++;
+			j++;
+		}
+		i++;
+	}
+	if (player > 1 || sortie > 1 || collectible == 0 || empty == 0)
+	{
+		printf("map is not complete\n");
+		exit(1);
 	}
 	return (0);
 }
