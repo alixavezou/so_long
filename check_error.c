@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:29:52 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/07/25 18:59:11 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/07/26 14:26:18 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,11 @@ int	ft_check_map(t_data *data)
 	}
 	return (0);
 }
-//TO-DO:
-//On veut afficher notre map
-//Il va falloir afficher dans le shell chaque pas du player
+
+// TO-DO:
+// Il va falloir afficher dans le shell chaque pas du player
+// Il faut faire bouger notre player
+// vérifier la forme de la map
+// vérifier que la window s'adapte à la taille de la map
+// vérifier que notre jeu fonctionne avec n'importe quel fichier .ber
+//

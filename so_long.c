@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 18:25:29 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/07/26 01:06:33 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/07/26 14:26:35 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,13 @@ int main(void)
 {
 	void	*mlx_ptr;
 	void	*mlx_win;
-	int		width;
-	int		heigth;
 	t_data data;
 
-	width = 0;
-	heigth = 0;
 	data.file_name = "map/map.ber";
 	data.mlx_ptr = mlx_init();
 	if (data.mlx_ptr == NULL)
 		return (1);
 	data.mlx_win = mlx_new_window(data.mlx_ptr, 600, 300, "so_long");
-	// data.mlx_img = mlx_xpm_file_to_image(data.mlx_ptr, "walls.xpm", &width, &heigth);
-	// mlx_put_image_to_window(data.mlx_ptr, data.mlx_win, data.mlx_img, 0, 0);
 	if (data.mlx_win == NULL)
 	{
 		free (data.mlx_win);
