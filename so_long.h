@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2022/07/26 01:31:41 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/07/26 15:49:28 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ struct s_data
 
 	int			x;
 	int			y;
-	int			map_size;
+	int			map_size;//ce qui nous permettra d'adapter la taille de la map à la window
 	int			total_nb_line;
 	int			total_nb_col;
 	// int			image_width;

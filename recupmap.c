@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 19:12:51 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/07/25 19:00:01 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/07/26 15:49:42 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ void	ft_init_map(t_data *data)
 	fd = open("map/map.ber", O_RDONLY);
 	while (nb_line > 0)
 	{
+		data->map[i] = malloc(sizeof(char) * (nb_col + 1));
 		if (!data->map)
 			return ;
-		data->map[i] = malloc(sizeof(char) * (nb_col + 1));
 		data->map[i] = get_next_line(fd);
 		i++;
 		nb_line--;

@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:29:52 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/07/26 14:26:18 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/07/26 15:43:14 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_check_walls(t_data *data)
 		return (1);
 	size = data->total_nb_line;
 	x = 0;
-	while (data->map[0][x + 1]) //tant que le caractère à (x + 1) != 0 -> il n'ira pas sur le \n car après il y a un \0
+	while (data->map[0][x + 1])//tant que le caractère à (x + 1) != 0 -> il n'ira pas sur le \n car après il y a un \0
 	{
 		if (data->map[0][x] != '1')
 		{
@@ -89,7 +89,6 @@ int	ft_check_map(t_data *data)
 	collectible = 0;
 	sortie = 0;
 	empty = 0;
-
 	while (data->map[i] != NULL)
 	{
 		j = 0;
@@ -107,10 +106,9 @@ int	ft_check_map(t_data *data)
 		}
 		i++;
 	}
-	if (player > 1 || sortie > 1 || collectible == 0 || empty == 0)
+	if (player == 0 || sortie == 0 || collectible == 0 || empty == 0)
 	{
-
-		printf("Map is not right p=%d, s=%d, c=%d, e=%d\n",player, sortie, collectible, empty);
+		printf("Map is not complete\n");
 		exit(1);
 	}
 	return (0);
@@ -119,7 +117,6 @@ int	ft_check_map(t_data *data)
 // TO-DO:
 // Il va falloir afficher dans le shell chaque pas du player
 // Il faut faire bouger notre player
-// vérifier la forme de la map
 // vérifier que la window s'adapte à la taille de la map
 // vérifier que notre jeu fonctionne avec n'importe quel fichier .ber
-//
+//changer les printf avec ma fonction printf
