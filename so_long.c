@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 18:25:29 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/07/26 16:55:42 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/08/07 13:13:51 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int main(void)
 	/* Setup hooks on which we are going to trigger after the loop */
 	mlx_key_hook(data.mlx_win, &key_hook, &data);
 	ft_init_map(&data);
+	ft_check_extension(&data);
 	ft_errors_map(&data);
 	ft_check_walls(&data);
 	ft_check_map(&data);

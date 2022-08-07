@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2022/07/26 15:49:28 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/08/05 22:52:34 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void 	ft_init_map(t_data *so_long);
 void	ft_recup_map_size(t_data *data);
 void	ft_errors_map(t_data *data);
 void	ft_place_xpm(t_data *data);
+void	ft_check_extension(t_data *data);
+// void	ft_inside_map(t_data *data);
 
 int		key_hook(int keycode, t_data *data);
 int		handle_no_event(void *data);

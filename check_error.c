@@ -6,24 +6,86 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:29:52 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/07/26 15:43:14 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/08/07 13:13:27 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "ft_printf/ft_printf.h"
 
-int	ft_check_walls(t_data *data)
+// void file_error(t_data *data)
+// {
+// 	int len;
+// 	const char *last_four;
+
+// 	len = ft_strlen(data->file_name);
+// 	last_four = &(data->file_name)[len - 4];
+// 	if (len < 5 || ft_strncmp(".ber", last_four, 5) != 0)
+// 		ft_puterror("ERROR : input file is not compatible");
+// }
+
+void ft_check_extension(t_data *data) // chaque map doit finir par .ber
 {
-	int	x;
-	int	y;
-	int	size;
+	int len;
+	int j;
+
+	len = ft_strlen(data->file_name);//c'est la taille du nom de notre fichier
+	j = len - 1;// c'est notre compteur qui démarre sur le dernier char du nom du fichier qui est sensé être "r"
+	if (!data->file_name)
+	{
+		printf("problem with the file!\n");
+		exit(1);
+	}
+
+	if (data->file_name[j] == 'r')
+		j--;
+	else
+	{
+		printf("filename doesn't end with 'r'!\n");
+		exit(1);
+	}
+	if (data->file_name[j] == 'e')
+		j--;
+	else
+	{
+		printf("filename doesn't end with 'e'!\n");
+		exit(1);
+	}
+	if (data->file_name[j] == 'b')
+		j--;
+	else
+	{
+		printf("filename doesn't end with 'b'!\n");
+		exit(1);
+	}
+	if (data->file_name[j] == '.')
+		j--;
+	else
+	{
+		printf("filename doesn't end with '.'!\n");
+		exit(1);
+	}
+	if (data->file_name[j] && data->file_name[j] != '.')
+		j--;
+	else
+	{
+		printf("filename has too many '.'!\n");
+		exit(1);
+	}
+	return ;
+}
+
+int ft_check_walls(t_data *data)
+{
+	int x;
+	int y;
+	int size;
 
 	if (!data->map)
 		return (1);
 	size = data->total_nb_line;
 	x = 0;
-	while (data->map[0][x + 1])//tant que le caractère à (x + 1) != 0 -> il n'ira pas sur le \n car après il y a un \0
+	while (data->map[0][x + 1]) // tant que le caractère à (x + 1) != 0 -> il n'ira pas sur le \n car après il y a un \0
 	{
 		if (data->map[0][x] != '1')
 		{
@@ -45,8 +107,8 @@ int	ft_check_walls(t_data *data)
 	y = 1;
 	while (y <= size - 2)
 	{
-		x = ft_strlen(data->map[y]); //strlen est la taille de la string en question - on ne veut pas la taille du tableau
-		if(data->map[y][0] != '1' || data->map[y][x - 2] != '1') //je mets x - 2 car avant le \0, il y a un \n
+		x = ft_strlen(data->map[y]);							  // strlen est la taille de la string en question - on ne veut pas la taille du tableau
+		if (data->map[y][0] != '1' || data->map[y][x - 2] != '1') // je mets x - 2 car avant le \0, il y a un \n
 		{
 			printf("Error\nThere are no walls\n");
 			exit(1);
@@ -56,11 +118,11 @@ int	ft_check_walls(t_data *data)
 	return (0);
 }
 
-void	ft_errors_map(t_data *data)
+void ft_errors_map(t_data *data)
 {
-	int		len;
-	int		i;
-	int		fd;
+	int len;
+	int i;
+	int fd;
 
 	i = 1;
 	len = ft_strlen(data->map[0]);
@@ -75,14 +137,14 @@ void	ft_errors_map(t_data *data)
 	}
 }
 
-int	ft_check_map(t_data *data)
+int ft_check_map(t_data *data)
 {
-	int	i; //un compteur qui change de ligne
-	int	j; //un compteur qui s'incrémente dans chaque ligne
-	int	player;
-	int	collectible;
-	int	sortie;
-	int	empty;
+	int i; // un compteur qui change de ligne
+	int j; // un compteur qui s'incrémente dans chaque ligne
+	int player;
+	int collectible;
+	int sortie;
+	int empty;
 
 	i = 0;
 	player = 0;
@@ -119,4 +181,4 @@ int	ft_check_map(t_data *data)
 // Il faut faire bouger notre player
 // vérifier que la window s'adapte à la taille de la map
 // vérifier que notre jeu fonctionne avec n'importe quel fichier .ber
-//changer les printf avec ma fonction printf
+// changer les printf avec ma fonction printf
