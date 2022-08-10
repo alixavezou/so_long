@@ -20,10 +20,11 @@ FT_MINILIBX = minilibx/libmlx_Linux.a
 
 MINILIBX = libmlx_Linux.a
 
-C_FILES = srcs/recupmap.c \
-			srcs/check_error.c \
-			srcs/main.c \
-			srcs/keycode.c \
+C_FILES = recupmap.c \
+			check_error.c \
+			main.c \
+			keycode.c \
+			srcs_utils.c \
 			get_next_line/get_next_line.c \
 			get_next_line/get_next_line_utils.c
 

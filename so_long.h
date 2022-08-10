@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2022/08/05 22:52:34 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/08/11 00:07:14 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,18 +64,20 @@ size_t	ft_strlen(char *str);
 
 void 	ft_init_map(t_data *so_long);
 void	ft_recup_map_size(t_data *data);
-void	ft_errors_map(t_data *data);
+void	ft_columns_size(t_data *data);
 void	ft_place_xpm(t_data *data);
-void	ft_check_extension(t_data *data);
-// void	ft_inside_map(t_data *data);
+// void	ft_check_extension(t_data *data);
+void	file_error(t_data *data);
+void	ft_print_walls(t_data env);
+void	ft_insidemap(t_data *data);
 
 int		key_hook(int keycode, t_data *data);
 int		handle_no_event(void *data);
 int		ft_checkendofline(char *buffer_save);
 int		ft_check_walls(t_data *data);
 int		ft_check_map(t_data *data);
+int		ft_strncmp(char *s1, char *s2, unsigned int nb);
 
-void 	ft_print_walls(t_data env);
 char	*ft_strdup(char *src);
 char	*ft_strjoin(char *s1, char *s2);
 void	ft_print_map(t_data *data);

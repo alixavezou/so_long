@@ -6,73 +6,29 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:29:52 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/08/07 13:13:27 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/08/11 00:05:32 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "ft_printf/ft_printf.h"
 
-// void file_error(t_data *data)
-// {
-// 	int len;
-// 	const char *last_four;
-
-// 	len = ft_strlen(data->file_name);
-// 	last_four = &(data->file_name)[len - 4];
-// 	if (len < 5 || ft_strncmp(".ber", last_four, 5) != 0)
-// 		ft_puterror("ERROR : input file is not compatible");
-// }
-
-void ft_check_extension(t_data *data) // chaque map doit finir par .ber
+void file_error(t_data *data)
 {
 	int len;
-	int j;
+	char *last_four;
 
-	len = ft_strlen(data->file_name);//c'est la taille du nom de notre fichier
-	j = len - 1;// c'est notre compteur qui démarre sur le dernier char du nom du fichier qui est sensé être "r"
-	if (!data->file_name)
+	len = ft_strlen(data->file_name);
+	last_four = &(data->file_name)[len - 4];
+	// printf("last four = %s\n", last_four);
+	if (len < 5 || ft_strncmp(".ber", last_four, 5) != 0)
 	{
-		printf("problem with the file!\n");
-		exit(1);
+		// printf("je rentre ici\n");
+		// printf("len2 = %d\n", len);
+		// printf("last four = %s\n", last_four);
+		printf("strncmp = %d\n", ft_strncmp(".ber", last_four, 5));
+		printf("ERROR : input file is not compatible");
 	}
-
-	if (data->file_name[j] == 'r')
-		j--;
-	else
-	{
-		printf("filename doesn't end with 'r'!\n");
-		exit(1);
-	}
-	if (data->file_name[j] == 'e')
-		j--;
-	else
-	{
-		printf("filename doesn't end with 'e'!\n");
-		exit(1);
-	}
-	if (data->file_name[j] == 'b')
-		j--;
-	else
-	{
-		printf("filename doesn't end with 'b'!\n");
-		exit(1);
-	}
-	if (data->file_name[j] == '.')
-		j--;
-	else
-	{
-		printf("filename doesn't end with '.'!\n");
-		exit(1);
-	}
-	if (data->file_name[j] && data->file_name[j] != '.')
-		j--;
-	else
-	{
-		printf("filename has too many '.'!\n");
-		exit(1);
-	}
-	return ;
 }
 
 int ft_check_walls(t_data *data)
@@ -118,7 +74,7 @@ int ft_check_walls(t_data *data)
 	return (0);
 }
 
-void ft_errors_map(t_data *data)
+void ft_columns_size(t_data *data)
 {
 	int len;
 	int i;
@@ -180,5 +136,5 @@ int ft_check_map(t_data *data)
 // Il va falloir afficher dans le shell chaque pas du player
 // Il faut faire bouger notre player
 // vérifier que la window s'adapte à la taille de la map
-// vérifier que notre jeu fonctionne avec n'importe quel fichier .ber
 // changer les printf avec ma fonction printf
+// Il faut bloquer la map avec seulement E, P, 0, C
