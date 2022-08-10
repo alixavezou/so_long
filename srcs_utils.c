@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 19:08:39 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/08/10 11:53:07 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/08/11 00:22:27 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 //toutes les fonctions externes utilisées pour ce programme
 
-int	ft_strncmp(char *s1, char *s2, unsigned int nb)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned int	i;
+	size_t	i;
 
 	i = 0;
-	if (nb == 0)
-		return (0);
-	while ((i + 1 < nb) && (s1[i] == s2[i]) && (s1[i] && s2[i]))
+	while ((s1[i] || s2[i]) && i < n)
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 		i++;
-	return (s1[i] - s2[i]);
+	}
+	return (0);
 }

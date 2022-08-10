@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:29:52 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/08/11 00:05:32 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/08/11 00:22:38 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,10 @@ void file_error(t_data *data)
 
 	len = ft_strlen(data->file_name);
 	last_four = &(data->file_name)[len - 4];
-	// printf("last four = %s\n", last_four);
 	if (len < 5 || ft_strncmp(".ber", last_four, 5) != 0)
 	{
-		// printf("je rentre ici\n");
-		// printf("len2 = %d\n", len);
-		// printf("last four = %s\n", last_four);
-		printf("strncmp = %d\n", ft_strncmp(".ber", last_four, 5));
 		printf("ERROR : input file is not compatible");
+		exit(1);
 	}
 }
 

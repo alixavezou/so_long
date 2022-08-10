@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2022/08/11 00:07:14 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/08/11 00:23:00 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void 	ft_init_map(t_data *so_long);
 void	ft_recup_map_size(t_data *data);
 void	ft_columns_size(t_data *data);
 void	ft_place_xpm(t_data *data);
-// void	ft_check_extension(t_data *data);
 void	file_error(t_data *data);
 void	ft_print_walls(t_data env);
 void	ft_insidemap(t_data *data);
@@ -76,7 +75,7 @@ int		handle_no_event(void *data);
 int		ft_checkendofline(char *buffer_save);
 int		ft_check_walls(t_data *data);
 int		ft_check_map(t_data *data);
-int		ft_strncmp(char *s1, char *s2, unsigned int nb);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 char	*ft_strdup(char *src);
 char	*ft_strjoin(char *s1, char *s2);
