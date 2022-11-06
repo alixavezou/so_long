@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2022/08/11 00:23:00 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/11/06 20:00:26 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,11 @@ struct s_data
 	void		*mlx_empty;
 	void		*mlx_items;
 
-	int			x;
-	int			y;
-	int			map_size;//ce qui nous permettra d'adapter la taille de la map à la window
+	int			x; //case de mon player (on enregistre sa position)
+	int			y; //ligne de mon player
+	int			map_size;
 	int			total_nb_line;
 	int			total_nb_col;
-	// int			image_width;
-	// int			image_heigth;
 
 	char		**map;
 	char		*file_name;
@@ -48,10 +46,10 @@ struct s_data
 
 //KEYCODE
 # define ESC 53
-# define GO_UP 119
-# define GO_DOWN 115
-# define GO_LEFT 97
-# define GO_RIGHT 100
+# define GO_UP 87//119
+# define GO_DOWN 83//115
+# define GO_LEFT 65//97
+# define GO_RIGHT 124//100
 
 //MAPS ELEMENTS
 # define ITEMS_IMAGE "collectible.xpm"
@@ -69,6 +67,8 @@ void	ft_place_xpm(t_data *data);
 void	file_error(t_data *data);
 void	ft_print_walls(t_data env);
 void	ft_insidemap(t_data *data);
+void	ft_get_player_position(t_data *data);
+
 
 int		key_hook(int keycode, t_data *data);
 int		handle_no_event(void *data);

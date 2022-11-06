@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/03 19:12:51 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/07/26 15:49:42 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/11/06 16:29:28 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,16 @@ void	ft_init_map(t_data *data)
 
 // int main()
 // {
-// 	t_data	data;
+	// t_data	data;
 // 	data.file_name = "map/map.ber";
 // 	ft_init_map(&data);
 // 	ft_errors_map(&data);
 // 	ft_check_walls(&data);
 // 	ft_check_map(&data);
-// 	printf("%s", data.map[0]);
-// 	printf("%s", data.map[1]);
-// 	printf("%s", data.map[2]);
-// 	printf("%s", data.map[3]);
-// 	printf("%s", data.map[4]);
-// 	printf("%s", data.map[5]);
+	// printf("%s", data.map[0]);
+	// printf("%s", data.map[1]);
+	// printf("%s", data.map[2]);
+	// printf("%s", data.map[3]);
+	// printf("%s", data.map[4]);
+	// printf("%s", data.map[5]);
 // }
