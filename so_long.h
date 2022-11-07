@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2022/11/06 20:00:26 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/11/07 18:35:48 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ struct s_data
 	void		*mlx_exit;
 	void		*mlx_empty;
 	void		*mlx_items;
+	void		*mlx_win2;
 
 	int			x; //case de mon player (on enregistre sa position)
 	int			y; //ligne de mon player
@@ -41,6 +42,7 @@ struct s_data
 	int			total_nb_col;
 
 	char		**map;
+	char		**map_new;
 	char		*file_name;
 };
 
