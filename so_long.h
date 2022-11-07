@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2022/11/07 18:35:48 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/11/07 21:45:27 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,9 @@ struct s_data
 
 //KEYCODE
 # define ESC 53
-# define GO_UP 87//119
-# define GO_DOWN 83//115
-# define GO_LEFT 65//97
+# define GO_UP 126//119
+# define GO_DOWN 125//115
+# define GO_LEFT 123//97
 # define GO_RIGHT 124//100
 
 //MAPS ELEMENTS
