@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:37:14 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/11/06 16:17:00 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/11/09 14:22:06 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void	ft_place_xpm(t_data *data)
 {
-	int		width;
-	int		heigth;
+	// int		width;
+	// int		heigth;
 	int		i; //ligne
 	int		j; //char
 
-	width = 0;
-	heigth = 0;
+	// width = 0;
+	// heigth = 0;
 	i = 0;
 	j = 0;
-	data->mlx_wall = mlx_xpm_file_to_image(data->mlx_ptr, WALLS_IMAGE, &width, &heigth);
-	data->mlx_items = mlx_xpm_file_to_image(data->mlx_ptr, ITEMS_IMAGE, &width, &heigth);
-	data->mlx_player = mlx_xpm_file_to_image(data->mlx_ptr, PLAYER_IMAGE, &width, &heigth);
-	data->mlx_exit = mlx_xpm_file_to_image(data->mlx_ptr, EXIT_IMAGE, &width, &heigth);
-	data->mlx_empty = mlx_xpm_file_to_image(data->mlx_ptr, EMPTY_IMAGE, &width, &heigth);
+	// data->mlx_wall = mlx_xpm_file_to_image(data->mlx_ptr, WALLS_IMAGE, &width, &heigth);
+	// data->mlx_items = mlx_xpm_file_to_image(data->mlx_ptr, ITEMS_IMAGE, &width, &heigth);
+	// data->mlx_player = mlx_xpm_file_to_image(data->mlx_ptr, PLAYER_IMAGE, &width, &heigth);
+	// data->mlx_exit = mlx_xpm_file_to_image(data->mlx_ptr, EXIT_IMAGE, &width, &heigth);
+	// data->mlx_empty = mlx_xpm_file_to_image(data->mlx_ptr, EMPTY_IMAGE, &width, &heigth);
 	while (data->map[i])
 	{
 		while (data->map[i][j] != '\0')

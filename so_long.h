@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2022/11/07 21:45:27 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/11/09 17:25:45 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ struct s_data
 	void		*mlx_exit;
 	void		*mlx_empty;
 	void		*mlx_items;
-	void		*mlx_win2;
 
 	int			x; //case de mon player (on enregistre sa position)
 	int			y; //ligne de mon player
 	int			map_size;
 	int			total_nb_line;
 	int			total_nb_col;
+	int			collected_items;
 
 	char		**map;
 	char		**map_new;
@@ -70,6 +70,7 @@ void	file_error(t_data *data);
 void	ft_print_walls(t_data env);
 void	ft_insidemap(t_data *data);
 void	ft_get_player_position(t_data *data);
+void	ft_initialize_ptr(t_data *data);
 
 
 int		key_hook(int keycode, t_data *data);
@@ -78,6 +79,7 @@ int		ft_checkendofline(char *buffer_save);
 int		ft_check_walls(t_data *data);
 int		ft_check_map(t_data *data);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_collected_items(t_data *data);
 
 char	*ft_strdup(char *src);
 char	*ft_strjoin(char *s1, char *s2);
