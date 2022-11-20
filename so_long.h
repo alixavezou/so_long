@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2022/11/09 17:25:45 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/11/20 18:55:48 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ void	file_error(t_data *data);
 void	ft_print_walls(t_data env);
 void	ft_insidemap(t_data *data);
 void	ft_get_player_position(t_data *data);
-void	ft_initialize_ptr(t_data *data);
-
 
 int		key_hook(int keycode, t_data *data);
 int		handle_no_event(void *data);

@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 19:38:41 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/11/09 17:51:47 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/11/20 18:55:04 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	key_hook(int keycode, t_data *data)
 	if (keycode == GO_RIGHT && data->map[data->y][data->x + 1] != '1')
 	{
 		data->x++; //on fait bouger le player
-		data->map[data->y][data->x + 1] = 'P'; //on lui assigne P à sa nouvelle position
+		data->map[data->y][data->x] = 'P'; //on lui assigne P à sa nouvelle position
 		data->map[data->y][data->x - 1] = '0'; //on remplace la case d'avant par un espace vide
 		ft_place_xpm(data);
 	}
