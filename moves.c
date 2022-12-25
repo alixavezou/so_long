@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:52:37 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/11/06 19:58:58 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/12/23 16:33:47 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,18 @@ void	ft_get_player_position(t_data *data)
 // {
 // 	t_data	data;
 // 	data.file_name = "map/map.ber";
-// 	ft_init_map(&data);
-// 	ft_insidemap(&data);
-// 	ft_check_map(&data);
-// 	ft_get_player_position(&data);
-// 	printf("player position x = %i\n", data.x);
-// 	printf("player position y = %i\n", data.y);
-// 	// printf("%s", data.map[0]);
-// 	// printf("%s", data.map[1]);
-// 	// printf("%s", data.map[2]);
-// 	// printf("%s", data.map[3]);
-// 	// printf("%c", data.map[4][1]);
-// 	// printf("%s", data.map[5]);
+// 	// ft_init_map(&data);
+// 	// ft_insidemap(&data);
+// 	// ft_check_map(&data);
+// 	// ft_get_player_position(&data);
+// 	// mlx_key_hook(data.mlx_win, &key_hook, &data);
+// 	// ft_get_player_position(&data);
+// 	// printf("player position x = %i\n", data.x);
+// 	// printf("player position y = %i\n", data.y);
+// 	printf("%s", data.map[0]);
+// 	printf("%s", data.map[1]);
+// 	printf("%s", data.map[2]);
+// 	printf("%s", data.map[3]);
+// 	printf("%c", data.map[4][1]);
+// 	printf("%s", data.map[5]);
 // }

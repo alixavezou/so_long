@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 18:25:29 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/11/20 18:55:53 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/12/25 22:17:07 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,12 @@ int main(void)
 
 	data.file_name = "map/map.ber";
 	data.mlx_ptr = mlx_init();
+	data.compteur = 0;
+	data.total_collectibles = 0;
+	data.collected_items = 0;
 	if (data.mlx_ptr == NULL)
 		return (1);
-	data.mlx_win = mlx_new_window(data.mlx_ptr, 1090, 190, "so_long");
+	data.mlx_win = mlx_new_window(data.mlx_ptr, 1088, 192, "so_long");
 	if (data.mlx_win == NULL)
 	{
 		free (data.mlx_win);
@@ -37,6 +40,7 @@ int main(void)
 	ft_check_walls(&data);
 	ft_check_map(&data);
 	ft_place_xpm(&data);
+	ft_collected_items(&data);
 
 	mlx_loop(data.mlx_ptr);
 }

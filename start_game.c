@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:37:14 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/11/20 18:52:29 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/12/25 21:18:19 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	ft_place_xpm(t_data *data)
 	data->mlx_empty = mlx_xpm_file_to_image(data->mlx_ptr, EMPTY_IMAGE, &width, &heigth);
 	while (data->map[i])
 	{
+		j = 0;//on remet notre compteur au char[0] de map[0]
 		while (data->map[i][j] != '\0')
 		{
 			if (data->map[i][j] == '1')//si le 1er char de map[0] == 1
@@ -40,7 +41,7 @@ void	ft_place_xpm(t_data *data)
 				mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->mlx_player, 32 * j, 32 * i);
 			if (!data->mlx_player)
 				printf("error of conversion xpm to win\n");
-			if (data->map[i][j] == 'E')
+			if (data->map[i][j] == 'E') 
 				mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->mlx_exit, 32 * j, 32 * i);
 			if (!data->mlx_exit)
 				printf("error of conversion xpm to win\n");
@@ -55,6 +56,5 @@ void	ft_place_xpm(t_data *data)
 			j++;
 		}
 		i++; //on passe à map[1]
-		j = 0;//on remet notre compteur au char[0] de map[0]
 	}
 }

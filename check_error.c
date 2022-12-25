@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:29:52 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/08/11 00:22:38 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/12/25 21:56:37 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,11 @@ int ft_check_map(t_data *data)
 			if (data->map[i][j] == 'P')
 				player++;
 			if (data->map[i][j] == 'E')
+			{
+				data->exit_x = j;
+				data->exit_y = i;
 				sortie++;
+			}
 			if (data->map[i][j] == '0')
 				empty++;
 			if (data->map[i][j] == 'C')
@@ -120,6 +124,7 @@ int ft_check_map(t_data *data)
 		}
 		i++;
 	}
+	data->total_collectibles = collectible;
 	if (player == 0 || sortie == 0 || collectible == 0 || empty == 0)
 	{
 		printf("Map is not complete\n");
@@ -129,8 +134,6 @@ int ft_check_map(t_data *data)
 }
 
 // TO-DO:
-// Il va falloir afficher dans le shell chaque pas du player
-// Il faut faire bouger notre player
 // vérifier que la window s'adapte à la taille de la map
 // changer les printf avec ma fonction printf
 // Il faut bloquer la map avec seulement E, P, 0, C

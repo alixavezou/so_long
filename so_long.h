@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2022/11/20 18:55:48 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/12/25 22:17:14 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ struct s_data
 	int			total_nb_line;
 	int			total_nb_col;
 	int			collected_items;
+	int			exit_x;
+	int			exit_y;
+	int			total_collectibles;
+	int			compteur; //compteur de moves
 
 	char		**map;
 	char		**map_new;
