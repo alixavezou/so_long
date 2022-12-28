@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 19:38:41 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/12/28 14:34:24 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/12/28 14:38:58 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,6 @@ void	ft_handle_exit(t_data *data)
 		{
 			printf("You have completed the game, well done!\n");
 			mlx_destroy_window(data->mlx_ptr, data->mlx_win);
+			exit (1);
 		}
 }
