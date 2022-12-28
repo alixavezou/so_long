@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 19:38:41 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/12/28 13:59:38 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/12/28 14:34:24 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ int	key_hook(int keycode, t_data *data)
 {
 	ft_get_player_position(data); //on recup la position du player
 	if (keycode == ESC)
+	{
 		mlx_destroy_window(data->mlx_ptr, data->mlx_win);
-	if (keycode == GO_RIGHT && data->map[data->y][data->x + 1] != '1')
+		exit (1);
+	}
+	if ((keycode == GO_RIGHT || keycode == D_KEY) && data->map[data->y][data->x + 1] != '1')
 	{
 		data->x++; //on fait bouger le player
 		if (data->map[data->y][data->x + 1] == 'C')
@@ -32,7 +35,7 @@ int	key_hook(int keycode, t_data *data)
 		ft_place_xpm(data);
 		ft_handle_exit(data);
 	}
-	if (keycode == GO_LEFT && data->map[data->y][data->x - 1] != '1')
+	if ((keycode == GO_LEFT || keycode == A_KEY) && data->map[data->y][data->x - 1] != '1')
 	{
 		data->x--;
 		if (data->map[data->y][data->x - 1] == 'C')
@@ -46,7 +49,7 @@ int	key_hook(int keycode, t_data *data)
 		ft_place_xpm(data);
 		ft_handle_exit(data);
 	}
-	if (keycode == GO_DOWN && data->map[data->y + 1][data->x] != '1')
+	if ((keycode == GO_DOWN || keycode == S_KEY) && data->map[data->y + 1][data->x] != '1')
 	{
 		data->y++;
 		if (data->map[data->y + 1][data->x] == 'C')
@@ -60,7 +63,7 @@ int	key_hook(int keycode, t_data *data)
 		ft_place_xpm(data);
 		ft_handle_exit(data);
 	}
-	if (keycode == GO_UP && data->map[data->y - 1][data->x] != '1')
+	if ((keycode == GO_UP || keycode == W_KEY) && data->map[data->y - 1][data->x] != '1')
 	{
 		data->y--;
 		if (data->map[data->y - 1][data->x] == 'C')
