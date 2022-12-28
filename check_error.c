@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:29:52 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/12/25 21:56:37 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/12/28 14:29:44 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void file_error(t_data *data)
 	last_four = &(data->file_name)[len - 4];
 	if (len < 5 || ft_strncmp(".ber", last_four, 5) != 0)
 	{
-		printf("ERROR : input file is not compatible");
+		printf("ERROR\nInput file is not compatible\n");
 		exit(1);
 	}
 }
@@ -59,7 +59,7 @@ int ft_check_walls(t_data *data)
 	y = 1;
 	while (y <= size - 2)
 	{
-		x = ft_strlen(data->map[y]);							  // strlen est la taille de la string en question - on ne veut pas la taille du tableau
+		x = ft_strlen(data->map[y]); // strlen est la taille de la string en question - on ne veut pas la taille du tableau
 		if (data->map[y][0] != '1' || data->map[y][x - 2] != '1') // je mets x - 2 car avant le \0, il y a un \n
 		{
 			printf("Error\nThere are no walls\n");
@@ -125,7 +125,7 @@ int ft_check_map(t_data *data)
 		i++;
 	}
 	data->total_collectibles = collectible;
-	if (player == 0 || sortie == 0 || collectible == 0 || empty == 0)
+	if (player == 0 || player > 1 || sortie == 0 || sortie > 1 || collectible == 0 || empty == 0)
 	{
 		printf("Map is not complete\n");
 		exit(1);

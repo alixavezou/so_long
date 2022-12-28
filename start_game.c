@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:37:14 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/12/25 21:18:19 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/12/28 14:28:44 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,25 @@ void	ft_place_xpm(t_data *data)
 			if (data->map[i][j] == '1')//si le 1er char de map[0] == 1
 				mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->mlx_wall, 32 * j, 32 * i); //* 32 pixels
 			if (!data->mlx_wall)
-				printf("error of conversion xpm to win\n");
+				printf("Error\nWrong conversion xpm to win\n");
 			if (data->map[i][j] == 'P')
 				mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->mlx_player, 32 * j, 32 * i);
 			if (!data->mlx_player)
-				printf("error of conversion xpm to win\n");
-			if (data->map[i][j] == 'E') 
+				printf("Error\nWrong conversion xpm to win\n");
+			if (data->map[i][j] == 'E')
 				mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->mlx_exit, 32 * j, 32 * i);
 			if (!data->mlx_exit)
-				printf("error of conversion xpm to win\n");
+				printf("Error\nWrong conversion xpm to win\n");
 			if (data->map[i][j] == '0')
 				mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->mlx_empty, 32 * j, 32 * i);
 			if (!data->mlx_empty)
-				printf("error of conversion xpm to win\n");
+				printf("Error\nWrong conversion xpm to win\n");
 			if (data->map[i][j] == 'C')
 				mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->mlx_items, 32 * j, 32 * i);
 			if (!data->mlx_items)
-				printf("error of conversion xpm to win\n");
+				printf("Error\nWrong conversion xpm to win\n");
 			j++;
 		}
-		i++; //on passe à map[1]
+		i++;
 	}
 }

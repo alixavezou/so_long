@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2022/12/25 22:17:14 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/12/28 14:32:13 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ struct s_data
 # define GO_DOWN 125//115
 # define GO_LEFT 123//97
 # define GO_RIGHT 124//100
+# define W_KEY 13
+# define A_KEY 0
+# define S_KEY 1
+# define D_KEY 2
 
 //MAPS ELEMENTS
 # define ITEMS_IMAGE "collectible.xpm"
@@ -74,6 +78,7 @@ void	file_error(t_data *data);
 void	ft_print_walls(t_data env);
 void	ft_insidemap(t_data *data);
 void	ft_get_player_position(t_data *data);
+void	ft_handle_exit(t_data *data);
 
 int		key_hook(int keycode, t_data *data);
 int		handle_no_event(void *data);
