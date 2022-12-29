@@ -6,12 +6,12 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 11:59:29 by aavezou           #+#    #+#             */
-/*   Updated: 2022/07/22 13:55:08 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/12/29 21:46:46 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-# include "ft_printf/ft_printf.h"
+#include "ft_printf/ft_printf.h"
 
 int	ft_checkendofline(char *buffer_save)
 {

@@ -6,24 +6,24 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2022/12/29 16:23:23 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/12/29 22:05:31 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include "minilibx/mlx/mlx.h"
-#include "ft_printf/ft_printf.h"
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
-#include <fcntl.h>
-#include <stdio.h>
-#include <ctype.h>
+# include "minilibx/mlx/mlx.h"
+# include "ft_printf/ft_printf.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include <string.h>
+# include <fcntl.h>
+# include <stdio.h>
+# include <ctype.h>
 
 typedef struct	s_data t_data;
-struct s_data
+struct	s_data
 {
 	void		*mlx_ptr;
 	void		*mlx_win;
@@ -34,8 +34,8 @@ struct s_data
 	void		*mlx_empty;
 	void		*mlx_items;
 
-	int			x; //case de mon player (on enregistre sa position)
-	int			y; //ligne de mon player
+	int			x;
+	int			y;
 	int			map_size;
 	int			total_nb_line;
 	int			total_nb_col;
@@ -46,7 +46,7 @@ struct s_data
 	int			exit_y;
 	int			collectibles_items;
 	int			total_collectibles;
-	int			compteur; //compteur de moves
+	int			compteur_of_moves;
 	int			row;
 	int			col;
 
@@ -75,7 +75,7 @@ struct s_data
 
 size_t	ft_strlen(char *str);
 
-void 	ft_init_map(t_data *so_long);
+void	ft_init_map(t_data *so_long);
 void	ft_recup_map_size(t_data *data);
 void	ft_columns_size(t_data *data);
 void	ft_place_xpm(t_data *data);

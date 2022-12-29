@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 17:52:37 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/12/29 14:15:12 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/12/29 21:47:39 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 void	ft_get_player_position(t_data *data)
 {
-	int	i; // lignes (y)
-	int	j; // cases (x)
+	int	i;
+	int	j;
 
 	i = 0;
 	while (data->map[i] != NULL)

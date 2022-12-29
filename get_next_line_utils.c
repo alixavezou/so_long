@@ -6,12 +6,12 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 12:57:45 by aavezou           #+#    #+#             */
-/*   Updated: 2022/07/22 13:55:02 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/12/29 21:47:02 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-# include "ft_printf/ft_printf.h"
+#include "ft_printf/ft_printf.h"
 
 size_t	ft_strlen(char *str)
 {

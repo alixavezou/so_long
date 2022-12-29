@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 17:37:14 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/12/28 14:28:44 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/12/29 21:59:33 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	ft_place_xpm(t_data *data)
 {
 	int		width;
 	int		heigth;
-	int		i; //ligne
-	int		j; //char
+	int		i;
+	int		j;
 
 	width = 0;
 	heigth = 0;
@@ -30,11 +30,11 @@ void	ft_place_xpm(t_data *data)
 	data->mlx_empty = mlx_xpm_file_to_image(data->mlx_ptr, EMPTY_IMAGE, &width, &heigth);
 	while (data->map[i])
 	{
-		j = 0;//on remet notre compteur au char[0] de map[0]
+		j = 0;
 		while (data->map[i][j] != '\0')
 		{
-			if (data->map[i][j] == '1')//si le 1er char de map[0] == 1
-				mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->mlx_wall, 32 * j, 32 * i); //* 32 pixels
+			if (data->map[i][j] == '1')
+				mlx_put_image_to_window(data->mlx_ptr, data->mlx_win, data->mlx_wall, 32 * j, 32 * i);
 			if (!data->mlx_wall)
 				printf("Error\nWrong conversion xpm to win\n");
 			if (data->map[i][j] == 'P')

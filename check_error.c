@@ -6,17 +6,17 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:29:52 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/12/29 21:28:09 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/12/29 21:45:52 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include "ft_printf/ft_printf.h"
 
-void file_error(t_data *data)
+void	file_error(t_data *data)
 {
-	int len;
-	char *last_four;
+	int		len;
+	char	*last_four;
 
 	len = ft_strlen(data->file_name);
 	last_four = &(data->file_name)[len - 4];
@@ -27,17 +27,17 @@ void file_error(t_data *data)
 	}
 }
 
-int ft_check_walls(t_data *data)
+int	ft_check_walls(t_data *data)
 {
-	int x;
-	int y;
-	int size;
+	int	x;
+	int	y;
+	int	size;
 
 	if (!data->map)
 		return (1);
 	size = data->total_nb_line;
 	x = 0;
-	while (data->map[0][x + 1]) // tant que le caractère à (x + 1) != 0 -> il n'ira pas sur le \n car après il y a un \0
+	while (data->map[0][x + 1])
 	{
 		if (data->map[0][x] != '1')
 		{
@@ -59,8 +59,8 @@ int ft_check_walls(t_data *data)
 	y = 1;
 	while (y <= size - 2)
 	{
-		x = ft_strlen(data->map[y]); // strlen est la taille de la string en question - on ne veut pas la taille du tableau
-		if (data->map[y][0] != '1' || data->map[y][x - 2] != '1') // je mets x - 2 car avant le \0, il y a un \n
+		x = ft_strlen(data->map[y]);
+		if (data->map[y][0] != '1' || data->map[y][x - 2] != '1')
 		{
 			printf("Error\nThere are no walls\n");
 			exit(1);
@@ -70,11 +70,11 @@ int ft_check_walls(t_data *data)
 	return (0);
 }
 
-void ft_columns_size(t_data *data)
+void	ft_columns_size(t_data *data)
 {
-	int len;
-	int i;
-	int fd;
+	int	len;
+	int	i;
+	int	fd;
 
 	i = 1;
 	len = ft_strlen(data->map[0]);
@@ -89,28 +89,20 @@ void ft_columns_size(t_data *data)
 	}
 }
 
-void print_map(t_data *data)
+int	ft_backtrack(int row, int col, t_data *data)
 {
-	int i = 0;
-
-	while(data->map){
-		printf("%s", data->map[i++]);
-	}
-}
-
-int ft_backtrack(int row, int col, t_data *data)
-{
-	printf("Position row: %d , col: %d \n",row, col);
 	if (row == data->exit_y && col == data->exit_x)
 		return (1);
-	if (row < 0 || row >= data->total_nb_line || col < 0 || col >= data->total_nb_col || data->map[row][col] == '1')
+	if (row < 0 || row >= data->total_nb_line || col < 0
+		|| col >= data->total_nb_col || data->map[row][col] == '1')
 		return (0);
 	if (data->map[row][col] == 'V')
-		return 0;
+		return (0);
 	data->map[row][col] = 'V';
 	if (data->map[row][col] == 'C')
 		data->collectibles_items++;
-	int failed_paths = 0;
+	int	failed_paths;
+	failed_paths = 0;
 	if (ft_backtrack(row - 1, col, data) == 0)
 		failed_paths++;
 	else
@@ -127,26 +119,27 @@ int ft_backtrack(int row, int col, t_data *data)
 		failed_paths++;
 	else
 		return (1);
-	if (failed_paths == 4)//4 = quand on a testé les 4 positions (up, down, left, right)
+	if (failed_paths == 4) //4 = quand on a testé les 4 positions (up, down, left, right)
 		return (0);
 	data->map[row][col] = '0'; //si le path est faux je backtrack et remplace par 0
 	return (0);
 }
 
-int ft_check_map(t_data *data)
+int	ft_check_map(t_data *data)
 {
-	int i; // un compteur qui change de ligne
-	int j; // un compteur qui s'incrémente dans chaque ligne
-	int player;
-	int collectible;
-	int sortie;
-	int empty;
+	int	i;
+	int	j;
+	int	player;
+	int	collectible;
+	int	sortie;
+	int	empty;
 
 	i = 0;
 	player = 0;
 	collectible = 0;
 	sortie = 0;
 	empty = 0;
+
 	while (data->map[i] != NULL)
 	{
 		j = 0;
@@ -158,7 +151,6 @@ int ft_check_map(t_data *data)
 				data->player_y = i;
 				player++;
 			}
-
 			if (data->map[i][j] == 'E')
 			{
 				data->exit_x = j;
@@ -174,11 +166,11 @@ int ft_check_map(t_data *data)
 		i++;
 	}
 	data->total_collectibles = collectible;
-	if (player == 0 || player > 1 || sortie == 0 || sortie > 1 || collectible == 0 || empty == 0)
+	if (player == 0 || player > 1 || sortie == 0
+	|| sortie > 1 || collectible == 0 || empty == 0)
 	{
 		printf("Error\nMap is not complete\n");
 		exit(1);
 	}
 	return (0);
 }
-
