@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2022/12/28 14:32:13 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/12/29 16:23:23 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,15 @@ struct s_data
 	int			total_nb_line;
 	int			total_nb_col;
 	int			collected_items;
+	int			player_x;
+	int			player_y;
 	int			exit_x;
 	int			exit_y;
+	int			collectibles_items;
 	int			total_collectibles;
 	int			compteur; //compteur de moves
+	int			row;
+	int			col;
 
 	char		**map;
 	char		**map_new;
@@ -87,6 +92,7 @@ int		ft_check_walls(t_data *data);
 int		ft_check_map(t_data *data);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_collected_items(t_data *data);
+int		ft_backtrack(int row, int col, t_data *data);
 
 char	*ft_strdup(char *src);
 char	*ft_strjoin(char *s1, char *s2);

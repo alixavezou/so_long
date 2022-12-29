@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:29:52 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/12/28 14:29:44 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/12/29 16:25:40 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,47 @@ void ft_columns_size(t_data *data)
 	{
 		if (len != ft_strlen(data->map[i]))
 		{
-			printf("wrong nb of columns\n");
+			printf("Error\nWrong nb of columns\n");
 			exit(1);
 		}
 		i++;
 	}
+}
+
+void print_map(t_data *data)
+{
+	int i = 0;
+
+	while(data->map){
+		printf("%s", data->map[i++]);
+	}
+}
+// Perform a depth-first search of the map starting at the player's current position
+int	ft_backtrack(int row, int col, t_data *data) {
+
+	printf("Position row: %d , col: %d \n",row, col);
+	// print_map(data);
+	// If we have reached the exit and collected all of the items, return true
+  	if (row ==  data->exit_y && col ==  data->exit_x && data->collectibles_items ==  data->total_collectibles) {
+    	return (1);
+  	}
+  	// If we have stepped outside the bounds of the map or encountered a wall, return false
+  	if (row < 0 || row >= data->total_nb_line || col < 0 || col >= data->total_nb_col || data->map[row][col] == '1') {
+    	return (0);
+  	}
+  // Mark the current location as visited
+ 	data->map[row][col] = 'V';
+	// If we find a collectible we increment the counter
+	if (data->map[row][col] == 'C')
+		data->collectibles_items++;
+  // Check the four adjacent locations (up, down, left, right)
+  	if (ft_backtrack(row - 1, col, data) || ft_backtrack(row + 1, col, data) || ft_backtrack(row, col - 1, data) || ft_backtrack(row, col + 1, data)) {
+    	return (1);
+  }
+
+  // If none of the adjacent locations led to a valid path, backtrack
+  	data->map[row][col] = '0'; // 0 for empty space
+  	return (0);
 }
 
 int ft_check_map(t_data *data)
@@ -109,7 +145,12 @@ int ft_check_map(t_data *data)
 		while (data->map[i][j] != '\0')
 		{
 			if (data->map[i][j] == 'P')
+			{
+				data->player_x = j;
+				data->player_y = i;
 				player++;
+			}
+
 			if (data->map[i][j] == 'E')
 			{
 				data->exit_x = j;
@@ -127,13 +168,8 @@ int ft_check_map(t_data *data)
 	data->total_collectibles = collectible;
 	if (player == 0 || player > 1 || sortie == 0 || sortie > 1 || collectible == 0 || empty == 0)
 	{
-		printf("Map is not complete\n");
+		printf("Error\nMap is not complete\n");
 		exit(1);
 	}
 	return (0);
 }
-
-// TO-DO:
-// vérifier que la window s'adapte à la taille de la map
-// changer les printf avec ma fonction printf
-// Il faut bloquer la map avec seulement E, P, 0, C

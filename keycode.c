@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 19:38:41 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/12/28 14:38:58 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/12/29 14:19:56 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,15 @@ void	ft_handle_exit(t_data *data)
 			printf("You need to collect all the items before exiting the game!\n");
 			return ;
 		}
-		else if (data->collected_items == data->total_collectibles)
+		else
 		{
-			printf("You have completed the game, well done!\n");
-			mlx_destroy_window(data->mlx_ptr, data->mlx_win);
-			exit (1);
+			if (data->collected_items == data->total_collectibles)
+			{
+				printf("You have completed the game, well done!\n");
+				mlx_destroy_window(data->mlx_ptr, data->mlx_win);
+				exit (1);
+			}
 		}
+
+
 }

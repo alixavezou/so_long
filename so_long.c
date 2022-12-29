@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 18:25:29 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/12/28 13:29:03 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/12/29 14:48:18 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int main(void)
 		return (1);
 	}
 	/* Setup hooks on which we are going to trigger after the loop */
+
 	mlx_key_hook(data.mlx_win, &key_hook, &data);
 	ft_init_map(&data);
 	file_error(&data);
@@ -40,6 +41,15 @@ int main(void)
 	ft_check_walls(&data);
 	ft_check_map(&data);
 	ft_place_xpm(&data);
+	printf("Position row: %d , col: %d \n",data.player_y,  data.player_x);
+	if (ft_backtrack(data.player_y, data.player_x, &data) == 1)
+	{
+		printf("there is a good way");
+	}
+	else
+	{
+		printf("there is NOOOOOO good way");
+	}
 	ft_handle_exit(&data);
 
 	mlx_loop(data.mlx_ptr);
