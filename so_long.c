@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 18:25:29 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/12/29 14:48:18 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/12/29 17:48:47 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,18 @@ int main(void)
 	ft_check_walls(&data);
 	ft_check_map(&data);
 	ft_place_xpm(&data);
-	printf("Position row: %d , col: %d \n",data.player_y,  data.player_x);
-	if (ft_backtrack(data.player_y, data.player_x, &data) == 1)
+	int result = ft_backtrack(data.player_y, data.player_x, &data);
+	if (result == 1)
 	{
-		printf("there is a good way");
+		printf("There is a good path in the map!\n");
 	}
 	else
 	{
-		printf("there is NOOOOOO good way");
+		if (result == 0)
+		{
+			printf("There is no good path to reach exit in this map\n");
+			exit (1);
+		}
 	}
 	ft_handle_exit(&data);
 

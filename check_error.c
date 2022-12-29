@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:29:52 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/12/29 16:25:40 by alixavezou       ###   ########.fr       */
+/*   Updated: 2022/12/29 21:28:09 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,32 +97,40 @@ void print_map(t_data *data)
 		printf("%s", data->map[i++]);
 	}
 }
-// Perform a depth-first search of the map starting at the player's current position
-int	ft_backtrack(int row, int col, t_data *data) {
 
+int ft_backtrack(int row, int col, t_data *data)
+{
 	printf("Position row: %d , col: %d \n",row, col);
-	// print_map(data);
-	// If we have reached the exit and collected all of the items, return true
-  	if (row ==  data->exit_y && col ==  data->exit_x && data->collectibles_items ==  data->total_collectibles) {
-    	return (1);
-  	}
-  	// If we have stepped outside the bounds of the map or encountered a wall, return false
-  	if (row < 0 || row >= data->total_nb_line || col < 0 || col >= data->total_nb_col || data->map[row][col] == '1') {
-    	return (0);
-  	}
-  // Mark the current location as visited
- 	data->map[row][col] = 'V';
-	// If we find a collectible we increment the counter
+	if (row == data->exit_y && col == data->exit_x)
+		return (1);
+	if (row < 0 || row >= data->total_nb_line || col < 0 || col >= data->total_nb_col || data->map[row][col] == '1')
+		return (0);
+	if (data->map[row][col] == 'V')
+		return 0;
+	data->map[row][col] = 'V';
 	if (data->map[row][col] == 'C')
 		data->collectibles_items++;
-  // Check the four adjacent locations (up, down, left, right)
-  	if (ft_backtrack(row - 1, col, data) || ft_backtrack(row + 1, col, data) || ft_backtrack(row, col - 1, data) || ft_backtrack(row, col + 1, data)) {
-    	return (1);
-  }
-
-  // If none of the adjacent locations led to a valid path, backtrack
-  	data->map[row][col] = '0'; // 0 for empty space
-  	return (0);
+	int failed_paths = 0;
+	if (ft_backtrack(row - 1, col, data) == 0)
+		failed_paths++;
+	else
+		return (1);
+	if (ft_backtrack(row + 1, col, data) == 0)
+		failed_paths++;
+	else
+		return (1);
+	if (ft_backtrack(row, col - 1, data) == 0)
+		failed_paths++;
+	else
+		return (1);
+	if (ft_backtrack(row, col + 1, data) == 0)
+		failed_paths++;
+	else
+		return (1);
+	if (failed_paths == 4)//4 = quand on a testé les 4 positions (up, down, left, right)
+		return (0);
+	data->map[row][col] = '0'; //si le path est faux je backtrack et remplace par 0
+	return (0);
 }
 
 int ft_check_map(t_data *data)
@@ -173,3 +181,4 @@ int ft_check_map(t_data *data)
 	}
 	return (0);
 }
+
