@@ -21,7 +21,7 @@ void	file_error(t_data *data)
 	last_four = &(data->file_name)[len - 4];
 	if (len < 5 || ft_strncmp(".ber", last_four, 5) != 0)
 	{
-		printf("ERROR\nInput file is not compatible\n");
+		ft_printf("ERROR\nInput file is not compatible\n");
 		exit(1);
 	}
 }
@@ -80,7 +80,7 @@ void	ft_columns_size(t_data *data)
 	{
 		if (len != (int)ft_strlen(data->map[i]))
 		{
-			printf("Error\nWrong nb of columns\n");
+			ft_printf("Error\nWrong nb of columns\n");
 			exit(1);
 		}
 		i++;
@@ -209,7 +209,7 @@ int	ft_check_map(t_data *data)
 	data->is_valid_path = ft_backtrack(data->player_y, data->player_x, data);
 	if (data->is_valid_path == 1)
 	{
-		printf("There is a good path in the map!\n");
+		ft_printf("There is a good path in the map!\n");
 	}
 	else
 	{
