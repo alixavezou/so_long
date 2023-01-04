@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2023/01/04 16:54:33 by alixavezou       ###   ########.fr       */
+/*   Updated: 2023/01/04 18:49:22 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # include "../mlx/mlx.h"
+# include "../libft/inc/libft.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
@@ -75,8 +76,6 @@ struct	s_data
 # define EMPTY_IMAGE "images/grass.xpm"
 # define WALLS_IMAGE "images/wall.xpm"
 
-size_t	ft_strlen(char *str);
-
 void	ft_init_map(t_data *so_long);
 void	ft_recup_map_size(t_data *data);
 void	ft_columns_size(t_data *data);
@@ -98,13 +97,10 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_collected_items(t_data *data);
 int		ft_backtrack(int row, int col, t_data *data);
 
-char	*ft_strdup(char *src);
-char	*ft_strjoin(char *s1, char *s2);
 void	ft_print_map(t_data *data);
 char	*ft_print_line(char *buffer_save);
 char	*ft_get_buffer_save(char *buffer_save);
 char	*ft_read(int fd, char *buffer_read);
 char	*get_next_line(int fd);
-char	*ft_substr(char *s, unsigned int start, size_t len);
 
 #endif

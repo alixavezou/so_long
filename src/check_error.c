@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:29:52 by alixavezou        #+#    #+#             */
-/*   Updated: 2023/01/04 15:20:26 by alixavezou       ###   ########.fr       */
+/*   Updated: 2023/01/04 18:41:35 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_check_walls(t_data *data)
 	{
 		if (data->map[0][x] != '1')
 		{
-			printf("Error\nThere are no walls\n");
+			ft_printf("Error\nThere are no walls\n");
 			exit(1);
 		}
 		x++;
@@ -50,7 +50,7 @@ int	ft_check_walls(t_data *data)
 	{
 		if (data->map[size - 1][x] != '1')
 		{
-			printf("Error\nThere are no walls\n");
+			ft_printf("Error\nThere are no walls\n");
 			exit(1);
 		}
 		x++;
@@ -61,7 +61,7 @@ int	ft_check_walls(t_data *data)
 		x = ft_strlen(data->map[y]);
 		if (data->map[y][0] != '1' || data->map[y][x - 2] != '1')
 		{
-			printf("Error\nThere are no walls\n");
+			ft_printf("Error\nThere are no walls\n");
 			exit(1);
 		}
 		y++;
@@ -203,7 +203,7 @@ int	ft_check_map(t_data *data)
 	data->total_collectibles = collectible;
 	if (player == 0 || player > 1 || sortie == 0 || sortie > 1 || collectible == 0 || empty == 0)
 	{
-		printf("Error\nMap is not complete\n");
+		ft_printf("Error\nMap is not complete\n");
 		exit(1);
 	}
 	data->is_valid_path = ft_backtrack(data->player_y, data->player_x, data);
@@ -213,7 +213,7 @@ int	ft_check_map(t_data *data)
 	}
 	else
 	{
-		printf("There is no valid path!\n");
+		ft_printf("There is no valid path!\n");
 		exit(1);
 	}
 	return (0);

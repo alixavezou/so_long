@@ -29,7 +29,7 @@ void	ft_insidemap(t_data *data)
 			}
 			else
 			{
-				 printf("map must only have 1, C, 0, P & E\n");
+				 ft_printf("map must only have 1, C, 0, P & E\n");
 				 exit(1);
 			}
 		}

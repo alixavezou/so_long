@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 19:38:41 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/12/31 19:02:55 by alixavezou       ###   ########.fr       */
+/*   Updated: 2023/01/04 18:16:08 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int	key_hook(int keycode, t_data *data)
 		ft_place_xpm(data);
 		ft_handle_exit(data);
 	}
-	printf("Number of moves: %d\n", data->compteur_of_moves);
+	ft_printf("Number of moves: %d\n", data->compteur_of_moves);
 	return (0);
 }
 
@@ -86,14 +86,14 @@ void	ft_handle_exit(t_data *data)
 	{
 		if (data->collected_items < data->total_collectibles)
 		{
-			printf("You need to collect all the items first!\n");
+			ft_printf("You need to collect all the items first!\n");
 			return ;
 		}
 		else
 		{
 			if (data->collected_items == data->total_collectibles)
 			{
-				printf("You finished the game in: %d moves!\n", data->compteur_of_moves);
+				ft_printf("You finished the game in: %d moves!\n", data->compteur_of_moves);
 				mlx_destroy_window(data->mlx_ptr, data->mlx_win);
 				ft_free_map(data->map);
 				ft_free_map(data->map_cpy);
