@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2023/01/03 16:29:56 by alixavezou       ###   ########.fr       */
+/*   Updated: 2023/01/04 16:54:33 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ struct	s_data
 # define D_KEY 2
 
 //MAPS ELEMENTS
-# define ITEMS_IMAGE "images/collectible.xpm"
+# define ITEMS_IMAGE "images/ball.xpm"
 # define PLAYER_IMAGE "images/player.xpm"
-# define EXIT_IMAGE "images/exit.xpm"
-# define EMPTY_IMAGE "images/empty.xpm"
-# define WALLS_IMAGE "images/walls.xpm"
+# define EXIT_IMAGE "images/goal.xpm"
+# define EMPTY_IMAGE "images/grass.xpm"
+# define WALLS_IMAGE "images/wall.xpm"
 
 size_t	ft_strlen(char *str);
 

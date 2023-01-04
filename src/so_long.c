@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/20 18:25:29 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/12/31 19:04:24 by alixavezou       ###   ########.fr       */
+/*   Updated: 2023/01/04 15:21:33 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int	main(void)
 		return (1);
 	}
 	mlx_key_hook(data.mlx_win, &key_hook, &data);
-	ft_init_map(&data);
 	file_error(&data);
+	ft_init_map(&data);
 	ft_insidemap(&data);
 	ft_columns_size(&data);
 	ft_check_walls(&data);
