@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:58:00 by alixavezou        #+#    #+#             */
-/*   Updated: 2023/01/04 18:09:40 by alixavezou       ###   ########.fr       */
+/*   Updated: 2023/01/04 19:42:05 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include "ft_printf.h"
+# include "get_next_line.h"
 
 void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *b, int c, size_t len);

@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2023/01/04 18:49:22 by alixavezou       ###   ########.fr       */
+/*   Updated: 2023/01/04 23:45:09 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,16 @@ struct	s_data
 
 	int			x;
 	int			y;
+	int			wall_x;
+	int			wall_y;
 	int			map_size;
 	int			total_nb_line;
 	int			total_nb_col;
 	int			collected_items;
+	int			player;
+	int			sortie;
+	int			collectible;
+	int			empty;
 	int			player_x;
 	int			player_y;
 	int			exit_x;
@@ -85,22 +91,22 @@ void	ft_print_walls(t_data env);
 void	ft_insidemap(t_data *data);
 void	ft_get_player_position(t_data *data);
 void	ft_handle_exit(t_data *data);
-void	ft_map(t_data *data);
 void	ft_free_map(char **map);
+void	ft_initialize_values(t_data *data);
+void	check_player(t_data *data, int i, int j);
+void	check_sortie(t_data *data, int i, int j);
+void	check_empty_space(t_data *data, int i, int j);
+void	ft_check_items(t_data *data, int i, int j);
+void	ft_check_valid_path(t_data *data);
+void	ft_check_x_walls(t_data *data);
+void	ft_check_walls_bottom(t_data *data, int size);
+void	ft_check_y_walls(t_data *data);
 
 int		key_hook(int keycode, t_data *data);
-int		handle_no_event(void *data);
-int		ft_checkendofline(char *buffer_save);
 int		ft_check_walls(t_data *data);
 int		ft_check_map(t_data *data);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_collected_items(t_data *data);
 int		ft_backtrack(int row, int col, t_data *data);
-
-void	ft_print_map(t_data *data);
-char	*ft_print_line(char *buffer_save);
-char	*ft_get_buffer_save(char *buffer_save);
-char	*ft_read(int fd, char *buffer_read);
-char	*get_next_line(int fd);
 
 #endif

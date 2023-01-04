@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 11:54:56 by alixavezou        #+#    #+#             */
-/*   Updated: 2022/12/31 19:02:57 by alixavezou       ###   ########.fr       */
+/*   Updated: 2023/01/04 23:04:38 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_insidemap(t_data *data)
 			}
 			else
 			{
-				 ft_printf("map must only have 1, C, 0, P & E\n");
+				 ft_printf("ERROR\nMap must only contains 1, C, 0, P & E\n");
 				 exit(1);
 			}
 		}

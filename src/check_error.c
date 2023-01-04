@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:29:52 by alixavezou        #+#    #+#             */
-/*   Updated: 2023/01/04 18:41:35 by alixavezou       ###   ########.fr       */
+/*   Updated: 2023/01/04 23:46:23 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,43 +28,29 @@ void	file_error(t_data *data)
 
 int	ft_check_walls(t_data *data)
 {
-	int	x;
-	int	y;
 	int	size;
 
 	if (!data->map)
 		return (1);
 	size = data->total_nb_line;
-	x = 0;
-	while (data->map[0][x + 1])
+	data->wall_x = 0;
+	while (data->map[0][data->wall_x + 1])
 	{
-		if (data->map[0][x] != '1')
-		{
-			ft_printf("Error\nThere are no walls\n");
-			exit(1);
-		}
-		x++;
+		ft_check_x_walls(data);
+		data->wall_x++;
 	}
-	x = 0;
-	while (data->map[size - 1][x + 1])
+	data->wall_x = 0;
+	while (data->map[size - 1][data->wall_x + 1])
 	{
-		if (data->map[size - 1][x] != '1')
-		{
-			ft_printf("Error\nThere are no walls\n");
-			exit(1);
-		}
-		x++;
+		ft_check_walls_bottom(data, size);
+		data->wall_x++;
 	}
-	y = 1;
-	while (y <= size - 2)
+	data->wall_y = 1;
+	while (data->wall_y <= size - 2)
 	{
-		x = ft_strlen(data->map[y]);
-		if (data->map[y][0] != '1' || data->map[y][x - 2] != '1')
-		{
-			ft_printf("Error\nThere are no walls\n");
-			exit(1);
-		}
-		y++;
+		data->wall_x = ft_strlen(data->map[data->wall_y]);
+		ft_check_y_walls(data);
+		data->wall_y++;
 	}
 	return (0);
 }
@@ -92,7 +78,7 @@ int	ft_backtrack(int row, int col, t_data *data)
 	if (row == data->exit_y && col == data->exit_x)
 		data->found_exit = 1;
 	if (data->found_exit == 1 && data->collectibles_items == data->total_collectibles)
-			return (1);
+		return (1);
 	if (row < 0 || row >= data->total_nb_line || col < 0 || col >= data->total_nb_col || data->map_cpy[row][col] == '1')
 		return (0);
 	if (data->map_cpy[row][col] == 'V')
@@ -123,98 +109,32 @@ int	ft_backtrack(int row, int col, t_data *data)
 	return (0);
 }
 
-// int ft_exit_found(int row, int col, t_data *data)
-// {
-// 	return row == data->exit_y && col == data->exit_x;
-// }
-
-// int ft_is_valid_move(int row, int col, t_data *data)
-// {
-// 	return row >= 0 && row < data->total_nb_line && col >= 0 && col < data->total_nb_col && data->map_cpy[row][col] != '1';
-// }
-
-// int ft_backtrack(int row, int col, t_data *data)
-// {
-// 	printf("==========\n");
-// 	printf("collec = %d\n", data->collectibles_items);
-// 	print_map(data->map_cpy);
-// 	printf("==========\n");
-// 	int result;
-
-// 	if (ft_exit_found(row, col, data))
-// 	{
-// 		data->found_exit = 1;
-// 		return data->collectibles_items == data->total_collectibles;
-// 	}
-// 	if (data->map_cpy[row][col] == 'V' || !ft_is_valid_move(row, col, data))
-// 		return 0;
-
-// 	data->map_cpy[row][col] = 'V';
-// 	if (data->map[row][col] == 'C')
-// 		data->collectibles_items++;
-
-// 	result = ft_backtrack(row - 1, col, data) || ft_backtrack(row + 1, col, data) || ft_backtrack(row, col - 1, data) || ft_backtrack(row, col + 1, data);
-// 	if (!result)
-// 		data->map_cpy[row][col] = '0';
-// 	return result;
-// }
-
-
 int	ft_check_map(t_data *data)
 {
 	int	i;
 	int	j;
-	int	player;
-	int	collectible;
-	int	sortie;
-	int	empty;
 
 	i = 0;
-	player = 0;
-	collectible = 0;
-	sortie = 0;
-	empty = 0;
-
 	while (data->map[i] != NULL)
 	{
 		j = 0;
 		while (data->map[i][j] != '\0')
 		{
-			if (data->map[i][j] == 'P')
-			{
-				data->player_x = j;
-				data->player_y = i;
-				player++;
-			}
-			if (data->map[i][j] == 'E')
-			{
-				data->exit_x = j;
-				data->exit_y = i;
-				sortie++;
-			}
-			if (data->map[i][j] == '0')
-				empty++;
-			if (data->map[i][j] == 'C')
-				collectible++;
+			check_player(data, i, j);
+			check_sortie(data, i, j);
+			check_empty_space(data, i, j);
+			ft_check_items(data, i, j);
 			j++;
 		}
 		i++;
 	}
-	data->total_collectibles = collectible;
-	if (player == 0 || player > 1 || sortie == 0 || sortie > 1 || collectible == 0 || empty == 0)
+	data->total_collectibles = data->collectible;
+	if (data->player == 0 || data->player > 1 || data->sortie == 0 || data->sortie > 1 || data->collectible == 0 || data->empty == 0)
 	{
 		ft_printf("Error\nMap is not complete\n");
 		exit(1);
 	}
 	data->is_valid_path = ft_backtrack(data->player_y, data->player_x, data);
-	if (data->is_valid_path == 1)
-	{
-		ft_printf("There is a good path in the map!\n");
-	}
-	else
-	{
-		ft_printf("There is no valid path!\n");
-		exit(1);
-	}
+	ft_check_valid_path(data);
 	return (0);
 }

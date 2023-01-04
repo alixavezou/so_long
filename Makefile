@@ -16,6 +16,9 @@ NAME = so_long
 SRC_NAME =	recupmap.c \
 			check_error.c \
 			check_error2.c \
+			walls_errors.c \
+			check_map_items.c \
+			initialize_values.c \
 			keycode.c \
 			moves.c \
 			so_long.c \
