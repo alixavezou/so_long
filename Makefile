@@ -1,64 +1,80 @@
+
+#SELL COLORS
+LRED = \033[31m
+GREEN = \033[32m
+YELLOW = \033[33m
+BLUE = \033[34m
+LBLUE = \033[34;1m
+PINK = \033[35m
+LCYAN = \033[36m
+END = \033[0m
+
+#PROGRAM NAME
 NAME = so_long
 
-CC = gcc
-
-RM = rm -rf
-
-CFLAGS = -Wall -Wextra -Werror
-
-MLXFLAGS = -Lminilibx -lm -lmlx -lXext -lX11
-
-PRINTF_PATH = ft_printf
-
-PRINTF = libftprintf.a
-
-FT_PRINTF = ft_printf/libftprintf.a
-
-MINILIBX_PATH = minilibx
-
-FT_MINILIBX = minilibx/libmlx_Linux.a
-
-MINILIBX = libmlx_Linux.a
-
-C_FILES = recupmap.c \
+#SOURCES AND OBJECTS
+SRC_NAME =	recupmap.c \
 			check_error.c \
-			main.c \
+			check_error2.c \
 			keycode.c \
+			moves.c \
+			so_long.c \
+			start_game.c \
 			srcs_utils.c \
-			get_next_line/get_next_line.c \
-			get_next_line/get_next_line_utils.c
 
-O_FILES = ${C_FILES:.c=.o}
+OBJ_NAME = $(SRC_NAME:.c=.o)
 
-all: ${NAME}
+SRC_PATH = src/
+OBJ_PATH = obj/
 
-%.o: %.c
-	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
+SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
+OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 
-# $(NAME): $(OBJ)
-# 	$(CC) $(OBJ) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+#COMPILATION
+CC = gcc
+FLAGS = -Wall -Wextra -Werror -I inc -I ./mlx
 
-${NAME} : ${O_FILES} ${PRINTF} ${MINILIBX}
-	@${CC} ${O_FILES} -Imlx -Iminilibx ${FT_PRINTF} ${FT_MINILIBX} ${MLXFLAGS} -o ${NAME}
+#LIBRARY
+LIBFT  = -L./libft -lft
+MLX = -L./mlx -lmlx -Ofast -framework OpenGL -framework AppKit -L./mlx/libmlx.dylib
 
-${PRINTF} :
-	@(cd ${PRINTF_PATH} && ${MAKE})
-	@cp ${PRINTF_PATH}/${PRINTF} .
+all: $(NAME)
 
-${MINILIBX} :
-	@(cd ${MINILIBX_PATH} && ${MAKE}) 2>/dev/null
-	@cp ${MINILIBX_PATH}/${MINILIBX} .
+$(NAME):$(OBJ)
+		@ make -C libft/
+		@ make -C mlx/
+		@ $(CC) $(FLAGS) $(LIBFT) $(MLX) $^ -o $@
+		@ echo "$(GREEN)Compilation done : so_long is ready to be used$(END)"
+
+$(OBJ_PATH)%.o:$(SRC_PATH)%.c
+		@ mkdir -p $(OBJ_PATH)
+		@ $(CC) $(FLAGS) -o $@ -c $<
+
+so_long_only:$(OBJ)
+		@ $(CC) $(FLAGS) -g $(LIBFT) $(MLX) $^ -o $(NAME)
+		@ echo "$(GREEN)Compilation done : so_long is ready to be used$(END)"
+
+$(OBJ_PATH)%.o:$(SRC_PATH)%.c
+		@ mkdir -p $(OBJ_PATH)
+		@ $(CC) $(FLAGS) -o $@ -c $<
 
 clean:
-	@${RM} ${O_FILES} ${O_FILES_BONUS}
+		@ make -C libft/ clean
+		@ make -C mlx/ clean
+		@ rm -vf $(OBJ)
+		@ rm -rfv $(OBJ_PATH)
+		@ echo "$(PINK)Cleaning is done!$(END)"
 
 fclean: clean
-	@${RM} ${NAME} ${NAME_BONUS} ${PRINTF} ${MINILIBX}
-	@cd ${PRINTF_PATH} && ${MAKE} $@
-	@cd ${MINILIBX_PATH} && ${MAKE} $<
-	@rm -rf ${FT_MINILIBX}
-	@rm -rf ./minilibx/libmlx.a
+		@ rm -vf $(NAME)
+		@ make -C libft/ fclean
+		@ make -C mlx/ fclean
+		@ echo "$(PINK)FCleaning is done!$(END)"
 
-re: fclean all
+norm:
+		@ echo "$(LBLUE)Norminette...$(END)"
+		@ norminette src inc
 
-.PHONY: all clean fclean re
+re: 	fclean all
+
+.PHONY: fclean all clean norm re so_long_only
