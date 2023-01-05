@@ -15,15 +15,16 @@ NAME = so_long
 #SOURCES AND OBJECTS
 SRC_NAME =	recupmap.c \
 			check_error.c \
-			check_error2.c \
+			insidemap.c \
 			walls_errors.c \
 			check_map_items.c \
 			initialize_values.c \
-			keycode.c \
-			moves.c \
+			player_moves.c \
+			player_position.c \
 			so_long.c \
-			start_game.c \
+			mlx_to_image.c \
 			srcs_utils.c \
+			handle_exit.c \
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
@@ -70,8 +71,8 @@ clean:
 
 fclean: clean
 		@ rm -vf $(NAME)
-		@ make -C libft/ fclean
-		@ make -C mlx/ fclean
+#@ make -C libft/ fclean
+#@ make -C mlx/ fclean
 		@ echo "$(PINK)FCleaning is done!$(END)"
 
 norm:

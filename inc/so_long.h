@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2023/01/04 23:45:09 by alixavezou       ###   ########.fr       */
+/*   Updated: 2023/01/05 13:39:39 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ struct	s_data
 	int			total_nb_line;
 	int			total_nb_col;
 	int			collected_items;
+	int			collectible_items;
 	int			player;
 	int			sortie;
 	int			collectible;
@@ -50,13 +51,11 @@ struct	s_data
 	int			player_y;
 	int			exit_x;
 	int			exit_y;
-	int			collectibles_items;
-	int			total_collectibles;
 	int			compteur_of_moves;
 	int			row;
 	int			col;
 	int			is_valid_path;
-	int 		found_exit;
+	int			found_exit;
 
 	char		**map;
 	char		**map_cpy;
@@ -82,25 +81,36 @@ struct	s_data
 # define EMPTY_IMAGE "images/grass.xpm"
 # define WALLS_IMAGE "images/wall.xpm"
 
-void	ft_init_map(t_data *so_long);
 void	ft_recup_map_size(t_data *data);
 void	ft_columns_size(t_data *data);
 void	ft_place_xpm(t_data *data);
-void	file_error(t_data *data);
-void	ft_print_walls(t_data env);
+void	ft_load_images(t_data *data);
+void	ft_draw_wall(t_data *data, int i, int j);
+void	ft_draw_player(t_data *data, int i, int j);
+void	ft_draw_exit(t_data *data, int i, int j);
+void	ft_draw_empty(t_data *data, int i, int j);
+void	ft_draw_item(t_data *data, int i, int j);
+void	ft_file_error(t_data *data);
 void	ft_insidemap(t_data *data);
 void	ft_get_player_position(t_data *data);
 void	ft_handle_exit(t_data *data);
 void	ft_free_map(char **map);
 void	ft_initialize_values(t_data *data);
-void	check_player(t_data *data, int i, int j);
-void	check_sortie(t_data *data, int i, int j);
-void	check_empty_space(t_data *data, int i, int j);
+void	ft_check_player(t_data *data, int i, int j);
+void	ft_check_sortie(t_data *data, int i, int j);
+void	ft_check_empty_space(t_data *data, int i, int j);
 void	ft_check_items(t_data *data, int i, int j);
 void	ft_check_valid_path(t_data *data);
 void	ft_check_x_walls(t_data *data);
 void	ft_check_walls_bottom(t_data *data, int size);
 void	ft_check_y_walls(t_data *data);
+void	ft_move_right(t_data *data);
+void	ft_move_left(t_data *data);
+void	ft_move_down(t_data *data);
+void	ft_move_up(t_data *data);
+void	ft_init_map(t_data *data);
+void	ft_allocate_maps(t_data *data, int nb_line);
+void	ft_initialize_maps(t_data *data, int nb_line, int nb_col);
 
 int		key_hook(int keycode, t_data *data);
 int		ft_check_walls(t_data *data);
@@ -108,5 +118,7 @@ int		ft_check_map(t_data *data);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_collected_items(t_data *data);
 int		ft_backtrack(int row, int col, t_data *data);
+int		ft_backtrack_part_1(int row, int col, t_data *data);
+int		ft_backtrack_part_2(int row, int col, t_data *data);
 
 #endif
