@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_error2.c                                     :+:      :+:    :+:   */
+/*   insidemap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 11:54:56 by alixavezou        #+#    #+#             */
-/*   Updated: 2023/01/04 23:04:38 by alixavezou       ###   ########.fr       */
+/*   Updated: 2023/01/05 17:54:29 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,10 @@ void	ft_insidemap(t_data *data)
 		j = 0;
 		while (data->map[i][j] != '\0')
 		{
-			if (data->map[i][j] == '1' || data->map[i][j] == '0' || data->map[i][j] == 'E' || data->map[i][j] == 'C' || data->map[i][j] == 'P' || data->map[i][j] == '\n' || data->map[i][j] == '\0')
+			if (data->map[i][j] == '1' || data->map[i][j] == '0'
+			|| data->map[i][j] == 'E' || data->map[i][j] == 'C'
+			|| data->map[i][j] == 'P' || data->map[i][j] == '\n'
+			|| data->map[i][j] == '\0')
 			{
 				j++;
 			}

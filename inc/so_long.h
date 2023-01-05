@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2023/01/05 13:39:39 by alixavezou       ###   ########.fr       */
+/*   Updated: 2023/01/05 18:00:06 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,11 @@ struct	s_data
 # define D_KEY 2
 
 //MAPS ELEMENTS
-# define ITEMS_IMAGE "images/ball.xpm"
-# define PLAYER_IMAGE "images/player.xpm"
-# define EXIT_IMAGE "images/goal.xpm"
-# define EMPTY_IMAGE "images/grass.xpm"
-# define WALLS_IMAGE "images/wall.xpm"
+# define ITEM_IMG "images/ball.xpm"
+# define PLAYER_IMG "images/player.xpm"
+# define EXIT_IMG "images/goal.xpm"
+# define EMPTY_IMG "images/grass.xpm"
+# define WALLS_IMG "images/wall.xpm"
 
 void	ft_recup_map_size(t_data *data);
 void	ft_columns_size(t_data *data);
@@ -100,6 +100,7 @@ void	ft_check_player(t_data *data, int i, int j);
 void	ft_check_sortie(t_data *data, int i, int j);
 void	ft_check_empty_space(t_data *data, int i, int j);
 void	ft_check_items(t_data *data, int i, int j);
+void	ft_check_map_is_complete(t_data *data);
 void	ft_check_valid_path(t_data *data);
 void	ft_check_x_walls(t_data *data);
 void	ft_check_walls_bottom(t_data *data, int size);

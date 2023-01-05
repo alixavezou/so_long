@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/04 16:29:52 by alixavezou        #+#    #+#             */
-/*   Updated: 2023/01/05 13:21:40 by alixavezou       ###   ########.fr       */
+/*   Updated: 2023/01/05 18:02:28 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ int	ft_backtrack_part_1(int row, int col, t_data *data)
 		data->found_exit = 1;
 	if (data->found_exit == 1 && data->collectible_items == data->collectible)
 		return (1);
-	if (row < 0 || row >= data->total_nb_line || col < 0 || col >= data->total_nb_col || data->map_cpy[row][col] == '1')
+	if (row < 0 || row >= data->total_nb_line
+		|| col < 0 || col >= data->total_nb_col
+		|| data->map_cpy[row][col] == '1')
 		return (0);
 	if (data->map_cpy[row][col] == 'V')
 		return (0);
@@ -93,11 +95,7 @@ int	ft_check_map(t_data *data)
 		}
 		i++;
 	}
-	if (data->player == 0 || data->player > 1 || data->sortie == 0 || data->sortie > 1 || data->collectible == 0 || data->empty == 0)
-	{
-		ft_printf("Error\nMap is not complete\n");
-		exit(1);
-	}
+	ft_check_map_is_complete(data);
 	data->is_valid_path = ft_backtrack(data->player_y, data->player_x, data);
 	ft_check_valid_path(data);
 	return (0);

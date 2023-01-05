@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   initialize_values.c                                :+:      :+:    :+:   */
+/*   check_map_items2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/04 19:01:12 by alixavezou        #+#    #+#             */
-/*   Updated: 2023/01/05 17:46:25 by alixavezou       ###   ########.fr       */
+/*   Created: 2023/01/05 17:58:08 by alixavezou        #+#    #+#             */
+/*   Updated: 2023/01/05 18:05:17 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_initialize_values(t_data *data)
+void	ft_check_map_is_complete(t_data *data)
 {
-	data->file_name = "map/map.ber";
-	data->mlx_ptr = mlx_init();
-	data->compteur_of_moves = 0;
-	data->collected_items = 0;
-	data->collectible_items = 0;
-	data->found_exit = 0;
-	data->is_valid_path = 0;
-	data->player = 0;
-	data->empty = 0;
-	data->collectible = 0;
-	data->sortie = 0;
+	if (data->player == 0 || data->player > 1 || data->sortie == 0
+		|| data->sortie > 1 || data->collectible == 0 || data->empty == 0)
+	{
+		ft_printf("Error\nMap is not complete\n");
+		exit(1);
+	}
 }

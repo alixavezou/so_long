@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:55:04 by alixavezou        #+#    #+#             */
-/*   Updated: 2023/01/05 12:55:11 by alixavezou       ###   ########.fr       */
+/*   Updated: 2023/01/05 17:53:57 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_handle_exit(t_data *data)
 		{
 			if (data->collected_items == data->collectible)
 			{
-				ft_printf("You finished the game in: %d moves!\n", data->compteur_of_moves);
+				ft_printf("See you soon!\n", data->compteur_of_moves);
 				mlx_destroy_window(data->mlx_ptr, data->mlx_win);
 				ft_free_map(data->map);
 				ft_free_map(data->map_cpy);

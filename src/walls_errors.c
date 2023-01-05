@@ -6,7 +6,7 @@
 /*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 23:05:25 by alixavezou        #+#    #+#             */
-/*   Updated: 2023/01/05 00:37:28 by alixavezou       ###   ########.fr       */
+/*   Updated: 2023/01/05 17:56:59 by alixavezou       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,8 @@ void	ft_check_walls_bottom(t_data *data, int size)
 
 void	ft_check_y_walls(t_data *data)
 {
-	if (data->map[data->wall_y][0] != '1' || data->map[data->wall_y][data->wall_x - 2] != '1')
+	if (data->map[data->wall_y][0] != '1'
+	|| data->map[data->wall_y][data->wall_x - 2] != '1')
 	{
 		ft_printf("Error\nMissing walls\n");
 		exit(1);

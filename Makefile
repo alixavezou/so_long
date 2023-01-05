@@ -18,11 +18,13 @@ SRC_NAME =	recupmap.c \
 			insidemap.c \
 			walls_errors.c \
 			check_map_items.c \
+			check_map_items2.c \
 			initialize_values.c \
 			player_moves.c \
 			player_position.c \
 			so_long.c \
 			mlx_to_image.c \
+			mlx_to_image2.c \
 			srcs_utils.c \
 			handle_exit.c \
 
@@ -71,8 +73,8 @@ clean:
 
 fclean: clean
 		@ rm -vf $(NAME)
-#@ make -C libft/ fclean
-#@ make -C mlx/ fclean
+		@ make -C libft/ fclean
+		@ make -C mlx/ fclean
 		@ echo "$(PINK)FCleaning is done!$(END)"
 
 norm:
