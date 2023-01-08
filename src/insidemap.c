@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   insidemap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
+/*   By: aavezou <aavezou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/10 11:54:56 by alixavezou        #+#    #+#             */
-/*   Updated: 2023/01/05 17:54:29 by alixavezou       ###   ########.fr       */
+/*   Created: 2022/08/10 11:54:56 by aavezou           #+#    #+#             */
+/*   Updated: 2023/01/08 23:24:25 by aavezou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,16 @@ void	ft_insidemap(t_data *data)
 		j = 0;
 		while (data->map[i][j] != '\0')
 		{
-			if (data->map[i][j] == '1' || data->map[i][j] == '0'
-			|| data->map[i][j] == 'E' || data->map[i][j] == 'C'
-			|| data->map[i][j] == 'P' || data->map[i][j] == '\n'
-			|| data->map[i][j] == '\0')
+			if (data->map[i][j] != '1' && data->map[i][j] != '0'
+			&& data->map[i][j] != 'E' && data->map[i][j] != 'C'
+			&& data->map[i][j] != 'P' && data->map[i][j] != '\n')
 			{
-				j++;
+				ft_free_map(data->map);
+				ft_free_map(data->map_cpy);
+				ft_printf("Error\nMap must only contains 1, C, 0, P & E\n");
+				exit(1);
 			}
-			else
-			{
-				 ft_printf("ERROR\nMap must only contains 1, C, 0, P & E\n");
-				 exit(1);
-			}
+			j++;
 		}
 		i++;
 	}

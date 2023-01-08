@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
+/*   By: aavezou <aavezou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/04 16:29:52 by alixavezou        #+#    #+#             */
-/*   Updated: 2023/01/05 18:02:28 by alixavezou       ###   ########.fr       */
+/*   Created: 2022/02/04 16:29:52 by aavezou           #+#    #+#             */
+/*   Updated: 2023/01/08 23:24:25 by aavezou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_file_error(t_data *data)
 	last_four = &(data->file_name)[len - 4];
 	if (len < 5 || ft_strncmp(".ber", last_four, 5) != 0)
 	{
-		ft_printf("ERROR\nInput file is not compatible\n");
+		ft_printf("Error\nInput file is not compatible\n");
 		exit(1);
 	}
 }
@@ -60,11 +60,11 @@ int	ft_backtrack_part_2(int row, int col, t_data *data)
 		return (1);
 	if (ft_backtrack(row + 1, col, data) == 0)
 		failed_paths++;
-	 else
+	else
 		return (1);
 	if (ft_backtrack(row, col - 1, data) == 0)
 		failed_paths++;
-	 else
+	else
 		return (1);
 	if (ft_backtrack(row, col + 1, data) == 0)
 		failed_paths++;

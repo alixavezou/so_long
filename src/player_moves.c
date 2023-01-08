@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_moves.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
+/*   By: aavezou <aavezou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/20 19:38:41 by alixavezou        #+#    #+#             */
-/*   Updated: 2023/01/05 17:40:03 by alixavezou       ###   ########.fr       */
+/*   Created: 2022/07/20 19:38:41 by aavezou           #+#    #+#             */
+/*   Updated: 2023/01/08 23:24:25 by aavezou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@ int	key_hook(int keycode, t_data *data)
 {
 	ft_get_player_position(data);
 	if (keycode == ESC)
-	{
-		mlx_destroy_window(data->mlx_ptr, data->mlx_win);
-		exit(1);
-	}
+		ft_close(data);
 	if (keycode == GO_RIGHT || keycode == D_KEY)
 		ft_move_right(data);
 	if (keycode == GO_LEFT || keycode == A_KEY)

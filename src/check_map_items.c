@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_items.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
+/*   By: aavezou <aavezou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/04 22:47:34 by alixavezou        #+#    #+#             */
-/*   Updated: 2023/01/05 13:15:04 by alixavezou       ###   ########.fr       */
+/*   Created: 2023/01/04 22:47:34 by aavezou           #+#    #+#             */
+/*   Updated: 2023/01/08 23:24:25 by aavezou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	ft_check_valid_path(t_data *data)
 		ft_printf("There is a valid path in the map!\n");
 	else
 	{
+		ft_free_map(data->map);
+		ft_free_map(data->map_cpy);
 		ft_printf("Error\nThere is no valid path!\n");
 		exit(1);
 	}

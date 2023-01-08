@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_to_image.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
+/*   By: aavezou <aavezou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/25 17:37:14 by alixavezou        #+#    #+#             */
-/*   Updated: 2023/01/05 17:39:17 by alixavezou       ###   ########.fr       */
+/*   Created: 2022/07/25 17:37:14 by aavezou           #+#    #+#             */
+/*   Updated: 2023/01/08 23:24:25 by aavezou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	ft_place_xpm(t_data *data)
 	int	j;
 
 	i = 0;
-	ft_load_images(data);
 	while (data->map[i])
 	{
 		j = 0;
@@ -52,4 +51,13 @@ void	ft_load_images(t_data *data)
 	data->mlx_player = mlx_xpm_file_to_image(data->mlx_ptr, PLAYER_IMG, &w, &h);
 	data->mlx_exit = mlx_xpm_file_to_image(data->mlx_ptr, EXIT_IMG, &w, &h);
 	data->mlx_empty = mlx_xpm_file_to_image(data->mlx_ptr, EMPTY_IMG, &w, &h);
+}
+
+void	ft_destroy_image(t_data *data)
+{
+	mlx_destroy_image(data->mlx_ptr, data->mlx_wall);
+	mlx_destroy_image(data->mlx_ptr, data->mlx_player);
+	mlx_destroy_image(data->mlx_ptr, data->mlx_exit);
+	mlx_destroy_image(data->mlx_ptr, data->mlx_empty);
+	mlx_destroy_image(data->mlx_ptr, data->mlx_items);
 }

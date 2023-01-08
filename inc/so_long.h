@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alixavezou <alixavezou@student.42.fr>      +#+  +:+       +#+        */
+/*   By: aavezou <aavezou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 17:17:55 by aavezou           #+#    #+#             */
-/*   Updated: 2023/01/05 18:00:06 by alixavezou       ###   ########.fr       */
+/*   Updated: 2023/01/08 23:23:25 by aavezou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../mlx/mlx.h"
+# include "../mlx_linux/mlx.h"
 # include "../libft/inc/libft.h"
 # include <unistd.h>
 # include <stdlib.h>
@@ -22,7 +22,7 @@
 # include <stdio.h>
 # include <ctype.h>
 
-typedef struct	s_data t_data;
+typedef struct s_data	t_data;
 struct	s_data
 {
 	void		*mlx_ptr;
@@ -59,20 +59,30 @@ struct	s_data
 
 	char		**map;
 	char		**map_cpy;
-	char		**map_new;
 	char		*file_name;
 };
 
+enum {
+	ON_KEYDOWN = 2,
+	ON_KEYUP = 3,
+	ON_MOUSEDOWN = 4,
+	ON_MOUSEUP = 5,
+	ON_MOUSEMOVE = 6,
+	ON_EXPOSE = 12,
+	ON_DESTROY = 17
+};
+
 //KEYCODE
-# define ESC 53
-# define GO_UP 126//119
-# define GO_DOWN 125//115
-# define GO_LEFT 123//97
-# define GO_RIGHT 124//100
-# define W_KEY 13
-# define A_KEY 0
-# define S_KEY 1
-# define D_KEY 2
+# define ESC 65307
+# define CROSS 17
+# define GO_UP 65362
+# define GO_DOWN 65364
+# define GO_LEFT 65361
+# define GO_RIGHT 65363
+# define W_KEY 119
+# define A_KEY 97
+# define S_KEY 115
+# define D_KEY 100
 
 //MAPS ELEMENTS
 # define ITEM_IMG "images/ball.xpm"
@@ -85,17 +95,12 @@ void	ft_recup_map_size(t_data *data);
 void	ft_columns_size(t_data *data);
 void	ft_place_xpm(t_data *data);
 void	ft_load_images(t_data *data);
-void	ft_draw_wall(t_data *data, int i, int j);
-void	ft_draw_player(t_data *data, int i, int j);
-void	ft_draw_exit(t_data *data, int i, int j);
-void	ft_draw_empty(t_data *data, int i, int j);
-void	ft_draw_item(t_data *data, int i, int j);
 void	ft_file_error(t_data *data);
 void	ft_insidemap(t_data *data);
 void	ft_get_player_position(t_data *data);
 void	ft_handle_exit(t_data *data);
 void	ft_free_map(char **map);
-void	ft_initialize_values(t_data *data);
+void	ft_initialize_values(t_data *data, char *filename);
 void	ft_check_player(t_data *data, int i, int j);
 void	ft_check_sortie(t_data *data, int i, int j);
 void	ft_check_empty_space(t_data *data, int i, int j);
@@ -111,15 +116,24 @@ void	ft_move_down(t_data *data);
 void	ft_move_up(t_data *data);
 void	ft_init_map(t_data *data);
 void	ft_allocate_maps(t_data *data, int nb_line);
-void	ft_initialize_maps(t_data *data, int nb_line, int nb_col);
+void	ft_initialize_maps(t_data *data, int nb_line);
+void	ft_destroy_image(t_data *data);
 
 int		key_hook(int keycode, t_data *data);
 int		ft_check_walls(t_data *data);
 int		ft_check_map(t_data *data);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-int		ft_collected_items(t_data *data);
 int		ft_backtrack(int row, int col, t_data *data);
 int		ft_backtrack_part_1(int row, int col, t_data *data);
 int		ft_backtrack_part_2(int row, int col, t_data *data);
+int		ft_draw_wall(t_data *data, int i, int j);
+int		ft_draw_player(t_data *data, int i, int j);
+int		ft_draw_exit(t_data *data, int i, int j);
+int 	ft_draw_empty(t_data *data, int i, int j);
+int 	ft_draw_item(t_data *data, int i, int j);
+int		ft_check_if_map_is_empty(t_data *data);
+int		init_window(t_data *data);
+int		ft_close(t_data *data);
+int		ft_get_nbr_col(char *str);
 
 #endif

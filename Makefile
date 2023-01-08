@@ -17,6 +17,7 @@ SRC_NAME =	recupmap.c \
 			check_error.c \
 			insidemap.c \
 			walls_errors.c \
+			walls_errors2.c \
 			check_map_items.c \
 			check_map_items2.c \
 			initialize_values.c \
@@ -37,28 +38,25 @@ SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 
 #COMPILATION
-CC = gcc
-FLAGS = -Wall -Wextra -Werror -I inc -I ./mlx
+CC = cc
+FLAGS = -Wall -Wextra -Werror -g3 -I inc
 
 #LIBRARY
-LIBFT  = -L./libft -lft
-MLX = -L./mlx -lmlx -Ofast -framework OpenGL -framework AppKit -L./mlx/libmlx.dylib
+LIBFT  = ./libft/libft.a -I libft/inc 
+MLX = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm 
+all: link $(NAME)
 
-all: $(NAME)
+link:
+	@ make -C libft/
+	@ make -C mlx_linux/
 
 $(NAME):$(OBJ)
-		@ make -C libft/
-		@ make -C mlx/
-		@ $(CC) $(FLAGS) $(LIBFT) $(MLX) $^ -o $@
+		@ $(CC) $(FLAGS) $^ $(LIBFT) $(MLX) -o $@
 		@ echo "$(GREEN)Compilation done : so_long is ready to be used$(END)"
 
 $(OBJ_PATH)%.o:$(SRC_PATH)%.c
 		@ mkdir -p $(OBJ_PATH)
 		@ $(CC) $(FLAGS) -o $@ -c $<
-
-so_long_only:$(OBJ)
-		@ $(CC) $(FLAGS) -g $(LIBFT) $(MLX) $^ -o $(NAME)
-		@ echo "$(GREEN)Compilation done : so_long is ready to be used$(END)"
 
 $(OBJ_PATH)%.o:$(SRC_PATH)%.c
 		@ mkdir -p $(OBJ_PATH)
@@ -66,7 +64,7 @@ $(OBJ_PATH)%.o:$(SRC_PATH)%.c
 
 clean:
 		@ make -C libft/ clean
-		@ make -C mlx/ clean
+		@ make -C mlx_linux/ clean
 		@ rm -vf $(OBJ)
 		@ rm -rfv $(OBJ_PATH)
 		@ echo "$(PINK)Cleaning is done!$(END)"
@@ -74,7 +72,6 @@ clean:
 fclean: clean
 		@ rm -vf $(NAME)
 		@ make -C libft/ fclean
-		@ make -C mlx/ fclean
 		@ echo "$(PINK)FCleaning is done!$(END)"
 
 norm:
